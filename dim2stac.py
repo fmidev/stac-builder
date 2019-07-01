@@ -47,7 +47,7 @@ def dim2stac(inputfile, baseurl):
     itemSpecFileName = os.path.basename(inputfile) + '.json'
 
     with open(inputfile) as fp:
-        soup = BeautifulSoup(fp, "xml")
+        soup = BeautifulSoup(fp, "lxml")
 
     identifier = soup.select("Dimap_Document > Dataset_Id > DATASET_NAME")[0].get_text()
     # title = soup.select("Dimap_Document > Dataset_Id > DATASET_SERIES")[0].get_text()
