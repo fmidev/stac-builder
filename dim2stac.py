@@ -28,7 +28,7 @@ def dataFileToS3Path(href):
 
 
 def stacFilePath(dim):
-    return 'items/' + os.path.basename(dim).replace(".dim", "") + '.json'
+    return 'item/' + os.path.basename(dim).replace(".dim", "") + '.json'
 
 
 # https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md
@@ -44,7 +44,7 @@ def dim2stac(inputfile, baseurl):
     def dataFilePath(href):
         return os.path.dirname(inputfile) + '/' + href
 
-    itemSpecFileName = os.path.basename(inputfile) + '.json'
+    itemSpecFileName = os.path.basename(inputfile).replace(".dim", "") + '.json'
 
     with open(inputfile) as fp:
         soup = BeautifulSoup(fp, "lxml")

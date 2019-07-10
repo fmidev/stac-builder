@@ -74,7 +74,7 @@ def list_products(bucket, http_url, prefix):
 
 
 def stac_file_path(date_range):
-    return "items/S2_{}.json".format(date_range)
+    return "item/S2_{}.json".format(date_range)
 
 
 def tiff_to_stac(dates, products, baseurl):

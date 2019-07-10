@@ -206,7 +206,7 @@ def processStac(file, rootCatalogue):
 if __name__ == '__main__':
     catalog = Catalog('root')
 
-    input_dir = './items/'
+    input_dir = './item/'
     for file in os.listdir(input_dir):
         if file.endswith('.json'):
             processStac(input_dir + file, catalog)
