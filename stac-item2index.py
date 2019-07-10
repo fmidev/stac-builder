@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-import geojson
-import os
 import json
+import os
+
+import geojson
 
 GEOHASH_ACCURACY = 2
 CATALOG_BASEURI = 'http://fmi.stac.fi/catalog/'
@@ -202,18 +203,19 @@ def processStac(file, rootCatalogue):
                 time_catalog.addItem(geoj)
 
 
-catalog = Catalog('root')
+if __name__ == '__main__':
+    catalog = Catalog('root')
 
-input_dir = './items/'
-for file in os.listdir(input_dir):
-    if file.endswith('.json'):
-        processStac(input_dir + file, catalog)
+    input_dir = './items/'
+    for file in os.listdir(input_dir):
+        if file.endswith('.json'):
+            processStac(input_dir + file, catalog)
 
-catalog.writeToFile('catalog/', 'FMI Sentinel catalog')
+    catalog.writeToFile('catalog/', 'FMI Sentinel catalog')
 
-for dataset in catalog.childCatalogs():
-    dataset.writeToFile('catalog/', 'FMI Sentinel catalog - ' + dataset.name)
-    for location in dataset.childCatalogs():
-        location.writeToFile('catalog/', 'FMI Sentinel catalog - ' + location.name)
-        for time in location.childCatalogs():
-            time.writeToFile('catalog/', 'FMI Sentinel catalog - ' + time.name)
+    for dataset in catalog.childCatalogs():
+        dataset.writeToFile('catalog/', 'FMI Sentinel catalog - ' + dataset.name)
+        for location in dataset.childCatalogs():
+            location.writeToFile('catalog/', 'FMI Sentinel catalog - ' + location.name)
+            for time in location.childCatalogs():
+                time.writeToFile('catalog/', 'FMI Sentinel catalog - ' + time.name)

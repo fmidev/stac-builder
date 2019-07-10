@@ -28,7 +28,7 @@ def dataFileToS3Path(href):
 
 
 def stacFilePath(dim):
-    return 'items/' + os.path.basename(dim) + '.json'
+    return 'items/' + os.path.basename(dim).replace(".dim", "") + '.json'
 
 
 # https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md
@@ -136,12 +136,5 @@ if __name__ == '__main__':
             print('{}: processing'.format(dim))
 
             data = dim2stac(dim, 'https://stac.fmi.fi/stac/catalog/')
-
-            outputfile = open(itemFileName, 'w')
-            outputfile.write(json.dumps(data, indent=4))
-            outputfile.close()
-
-##data = dim2stac('../../data/fmi-arctic-stac/source/S1_processed_20180101_153138_153257_019963_021FF3.dim', 'https://stac.fmi.fi/stac/catalog/')
-# data = dim2stac('data/S1_processed_20190101_042242_042357_025279_02CBBD.dim', 'https://stac.fmi.fi/stac/catalog/')
-
-# print(json.dumps(data, indent=4))
+            with  open(itemFileName, 'w') as outputfile:
+                outputfile.write(json.dumps(data, indent=4))
