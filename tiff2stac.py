@@ -57,12 +57,14 @@ def list_products(bucket, http_url, prefix):
     access_key = config['default']['access_key']
     secret_key = config['default']['secret_key']
     endpoint_url = config['default']['host_base']
+
     client = boto3.client(
         's3',
         aws_access_key_id=access_key,
         aws_secret_access_key=secret_key,
         endpoint_url='https://' + endpoint_url
     )
+
     product_images = [
         (get_date(url), {product: url})
         for product in PRODUCTS for url in
@@ -77,12 +79,12 @@ def stac_file_path(date_range):
     return "item/S2_{}.json".format(date_range)
 
 
-def tiff_to_stac(dates, products, baseurl):
+def tiff_to_stac(item_file_name, dates, products, baseurl):
     def link_to(link):
         return os.path.join(baseurl, link)
 
     identifier = "S2_{}".format(dates)
-    title = "BEAM-PRODUCT"  # TODO: read from meta file? 'NC_GLOBAL#metadata_profile': 'beam'
+    title = "Sentinel 2 - {}".format(dates)
 
     assets = {
         product_name: {
@@ -116,7 +118,7 @@ def tiff_to_stac(dates, products, baseurl):
             'dtr:end_datetime': time_end
         },
         'links': [{
-            'href': link_to(""),
+            'href': link_to(item_file_name),
             'rel': 'self'
         }],
         'assets': assets
@@ -138,6 +140,6 @@ if __name__ == '__main__':
             print('{}: already processed ({})'.format(dates, item_file_name))
         else:
             print('{}: processing'.format(dates))
-            data = tiff_to_stac(dates, products, args.b_url)
+            data = tiff_to_stac(item_file_name, dates, products, args.b_url)
             with open(item_file_name, "w") as outputfile:
                 outputfile.write(json.dumps(data, indent=2))
