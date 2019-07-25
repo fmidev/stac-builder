@@ -83,7 +83,7 @@ def dim2stac(inputfile, input_uri, baseurl, args):
         tmp += link[5:]
         return tmp
 
-    itemSpecFileName = os.path.basename(inputfile).replace(".dim", "") + '.json'
+    itemSpecFileName = os.path.basename(inputfile)
 
     try:
         temp = tempfile.NamedTemporaryFile(suffix=".dim")

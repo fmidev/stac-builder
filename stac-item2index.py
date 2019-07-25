@@ -7,8 +7,6 @@ import geojson
 
 GEOHASH_ACCURACY = 2
 CATALOG_BASEURI = 'https://pta.data.lit.fmi.fi/stac/catalog/'
-ITEM_BASEURI = 'https://pta.data.lit.fmi.fi/stac/item/'
-
 
 def identifyDatasets(f):
     if 'id' not in f:
@@ -164,7 +162,8 @@ class Catalog:
             ret['links'].append(tmp)
 
         for item in self.items:
-            ret['links'].append({'rel': 'item', 'href': ITEM_BASEURI + item.id + '.json'})
+            link_self = [link for link in item.links if link['rel'] == 'self'][0]
+            ret['links'].append({'rel': 'item', 'href': link_self['href'] })
 
         ret['properties']['dtr:start_datetime'] = self.timeStart
         ret['properties']['dtr:end_datetime'] = self.timeEnd
