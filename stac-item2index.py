@@ -6,8 +6,8 @@ import os
 import geojson
 
 GEOHASH_ACCURACY = 2
-CATALOG_BASEURI = 'http://fmi.stac.fi/catalog/'
-ITEM_BASEURI = 'http://fmi.stac.fi/item/'
+CATALOG_BASEURI = 'https://pta.data.lit.fmi.fi/stac/catalog/'
+ITEM_BASEURI = 'https://pta.data.lit.fmi.fi/stac/item/'
 
 
 def identifyDatasets(f):
