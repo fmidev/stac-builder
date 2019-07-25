@@ -211,22 +211,33 @@ if __name__ == '__main__':
 
     #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20171103_152305_152420_008119_00E585.dim' ]
 
-    for dim in dims:
+    dims_to_process = []
 
+    for dim in dims:
+        dataset, dim_file = identifyS1Dim(dim)
+        itemFileName = stacFilePath(dataset, dim_file)
+        
+        if os.path.isfile(itemFileName):
+            print('{}: already processed ({})'.format(dim, itemFileName))
+        else:
+            dims_to_process.append(dim)
+
+    print('Processing {} DIM files from S3 (out of {})'.format(len(dims_to_process), len(dims)))
+
+    for dim in dims_to_process:
         try:
             dataset, dim_file = identifyS1Dim(dim)
 
             dim_uri = args.h_url + dim
 
             itemFileName = stacFilePath(dataset, dim_file)
-            
-            if os.path.isfile(itemFileName):
-                print('{}: already processed ({})'.format(dim, itemFileName))
-            else:
-                print('{}: processing'.format(dim))
 
-                data = dim2stac(itemFileName, dim_uri, catalogBaseUrl, args)
-                with open(itemFileName, 'w') as outputfile:
-                    outputfile.write(json.dumps(data, indent=4))
+            print('{}: processing'.format(dim))
+
+            data = dim2stac(itemFileName, dim_uri, catalogBaseUrl, args)
+
+            with open(itemFileName, 'w') as outputfile:
+                outputfile.write(json.dumps(data, indent=4))
+
         except IndexError:
             print("{}: could not process".format(dim))
