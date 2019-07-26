@@ -85,6 +85,8 @@ def dim2stac(inputfile, input_uri, baseurl, args):
 
     itemSpecFileName = os.path.basename(inputfile)
 
+    previous_cwd = os.getcwd()
+
     try:
         temp = tempfile.NamedTemporaryFile(suffix=".dim")
         urlretrieve(input_uri, temp.name)
@@ -120,7 +122,6 @@ def dim2stac(inputfile, input_uri, baseurl, args):
         with open(temp.name, 'w') as file:
           file.write(dim_xml)
 
-        previous_cwd = os.getcwd()
         os.chdir(os.path.dirname(temp.name))
         with rasterio.open(os.path.basename(temp.name)) as dataset:
             # dataset.count = number of raster bands in dataset
@@ -159,10 +160,9 @@ def dim2stac(inputfile, input_uri, baseurl, args):
                 'assets': assets
             }
 
-        os.chdir(previous_cwd)
-
     finally:
         temp.close()
+        os.chdir(previous_cwd)
 
     return ret
 
@@ -211,6 +211,8 @@ if __name__ == '__main__':
 
     #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20171103_152305_152420_008119_00E585.dim' ]
 
+    #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20181013_150922_151037_024119_02A30E.dim' ]
+
     dims_to_process = []
 
     for dim in dims:
@@ -232,12 +234,16 @@ if __name__ == '__main__':
 
             itemFileName = stacFilePath(dataset, dim_file)
 
-            print('{}: processing'.format(dim))
-
             data = dim2stac(itemFileName, dim_uri, catalogBaseUrl, args)
 
             with open(itemFileName, 'w') as outputfile:
                 outputfile.write(json.dumps(data, indent=4))
 
-        except IndexError:
-            print("{}: could not process".format(dim))
+            print('{}: processed'.format(dim))
+
+        except KeyboardInterrupt:
+            raise
+
+        except Exception as e:
+            print("{}: could not process, {}".format(dim, e))
+
