@@ -36,6 +36,7 @@ def parse_args():
                         help='Http base url for S3 files (default: %(default)s)')
     parser.add_argument('--s3_prefix', default='prefix',
                         help='S3 prefix for products to be listed (default: %(default)s)')
+    parser.add_argument('--node', default='1/1', help='which node out of how many nodes (default: %(default)s)')
     parser.set_defaults(all=True)
 
     return parser.parse_args()
@@ -205,7 +206,55 @@ if __name__ == '__main__':
 
     catalogBaseUrl += 'catalog/'
 
+    node_regex = re.match('^([0-9]+)/([0-9]+)$', args.node)
+    if node_regex is None:
+        raise Exception('{}: illegal value for --node'.format(args.node))
+
+    this_node = int(node_regex.group(1))
+    nodes_total = int(node_regex.group(2))
+
+
+    skiplist = []
+    try:
+        with open("skiplist", 'r') as file:
+            line = file.readline()
+            while line:
+                try:
+                    i = line.index('#')
+                    line = line[0:i]
+                except ValueError:
+                    pass
+
+                line = line.strip()
+
+                skiplist.append(line)
+
+                # Read next line
+                line = file.readline()
+    except FileNotFoundError:
+        pass
+
+    def dimNumber(dim):
+        match = re.match('^.*_([0-9A-Za-z]+).dim$', dim)
+        if match is None:
+            return 0
+        return int(match.group(1), 16)
+
     dims = list_dims(args.b, args.h_url, args.s3_prefix)
+
+    #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20181012_160705_160730_024105_02A29E.dim' ]
+
+    #print('dims',dims)
+    #print('skiplist', skiplist)
+
+    # Filter the ones for this processing node
+    dims = list(filter(lambda dim : (dimNumber(dim) % nodes_total) == (this_node-1), dims))
+
+    #print('---- dims for this node', dims)
+
+    dims = [dim for dim in dims if dim not in skiplist]
+
+    #print('---- dims without skiplist', dims)
 
     #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20170801_150845_151000_006748_00BDFA.dim' ]
 
@@ -243,6 +292,13 @@ if __name__ == '__main__':
 
         except KeyboardInterrupt:
             raise
+
+        except rasterio.errors.RasterioIOError as e:
+            err_msg = str(e);
+            if err_msg == 'HTTP response code: 403':
+                print("{}: HTTP 403 error, adding to skiplist".format(dim))
+                with open("skiplist", 'a') as file:
+                    file.write(dim+"\n")
 
         except Exception as e:
             print("{}: could not process, {}".format(dim, e))
