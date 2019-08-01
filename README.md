@@ -2,6 +2,10 @@
 
 This is a prototype utility to convert BEAM-DIMAP metadata into STAC items (https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md)
 
+The tool has three parts:
+* `tiff2stac.py` - lists geotiff files on S3 and produces STAC items of them (items are written in the folder `item/`)
+* `dim2stac.py` - lists DIM files on S3 and produces STAC items of them (items are written in the folder `item/`)
+* `stac-item2index.py` - creates a stac catalog of the STAC items in folder `item/` (catalog files are written in the folder `catalog/`)
 
 ## Requirements
 
@@ -22,6 +26,10 @@ You need to have a s3cmd configuration file with the right access keys and host_
 `python3 dim2stac.py -b pta --s3_prefix sen1/s1_grd_meta_prep --h_url https://pta.data.lit.fmi.fi/ --b_url https://pta.data.lit.fmi.fi/stac/`
 
 If the s3cmd config file is not at $HOME/.s3cfg, you can specify the path to the file via the parameter `--s3cfg`.
+
+### Creating the catalog
+
+`python3 stac-item2index.py`
 
 ## Interesting things
 
