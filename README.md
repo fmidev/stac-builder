@@ -17,11 +17,11 @@ GDAL 2.4.0 is also required, for Ubuntu, you can install it using the [UbuntuGIS
 
 You need to have a s3cmd configuration file with the right access keys and host_base configuration. 
 
-### Sentinel 1
+### Sentinel 2
 
 `python3 tiff2stac.py -b pta --s3_prefix sen2/s2m --h_url https://pta.data.lit.fmi.fi/ --b_url https://pta.data.lit.fmi.fi/stac/`
 
-### Sentinel 2 (dims)
+### Sentinel 1 (dims)
 
 `python3 dim2stac.py -b pta --s3_prefix sen1/s1_grd_meta_prep --h_url https://pta.data.lit.fmi.fi/ --b_url https://pta.data.lit.fmi.fi/stac/`
 
