@@ -200,11 +200,11 @@ if __name__ == '__main__':
     args = parse_args()
     set_environment()
 
-    catalogBaseUrl = args.b_url
-    if catalogBaseUrl[-1] != '/':
-        catalogBaseUrl += '/'
+    itemBaseUrl = args.b_url
+    if itemBaseUrl[-1] != '/':
+        itemBaseUrl += '/'
 
-    catalogBaseUrl += 'catalog/'
+    itemBaseUrl += 'item/'
 
     node_regex = re.match('^([0-9]+)/([0-9]+)$', args.node)
     if node_regex is None:
@@ -252,8 +252,6 @@ if __name__ == '__main__':
 
     #print('---- dims for this node', dims)
 
-    dims = [dim for dim in dims if dim not in skiplist]
-
     #print('---- dims without skiplist', dims)
 
     #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20170801_150845_151000_006748_00BDFA.dim' ]
@@ -268,7 +266,9 @@ if __name__ == '__main__':
         dataset, dim_file = identifyS1Dim(dim)
         itemFileName = stacFilePath(dataset, dim_file)
         
-        if os.path.isfile(itemFileName):
+        if dim in skiplist:
+            print('{}: in skiplist'.format(dim))
+        elif os.path.isfile(itemFileName):
             print('{}: already processed ({})'.format(dim, itemFileName))
         else:
             dims_to_process.append(dim)
@@ -283,7 +283,7 @@ if __name__ == '__main__':
 
             itemFileName = stacFilePath(dataset, dim_file)
 
-            data = dim2stac(itemFileName, dim_uri, catalogBaseUrl, args)
+            data = dim2stac(itemFileName, dim_uri, itemBaseUrl, args)
 
             with open(itemFileName, 'w') as outputfile:
                 outputfile.write(json.dumps(data, indent=4))
