@@ -1,28 +1,24 @@
 #!/usr/bin/env python
 
+import configparser
 import json
 import os
 import os.path
-import sys
 import re
-import distro
-
-import configparser
+import tempfile
 from argparse import ArgumentParser
-from pathlib import Path
-
 from datetime import datetime
-import urllib
+from pathlib import Path
 from urllib.parse import urljoin
 from urllib.request import urlretrieve
 
-import tempfile
-
 import boto3
-import rasterio
-import rasterio.features
+import distro
 import rasterio.warp
 from bs4 import BeautifulSoup
+from osgeo import gdal
+
+import datasetUtils
 
 
 def parse_args():
@@ -40,6 +36,7 @@ def parse_args():
     parser.set_defaults(all=True)
 
     return parser.parse_args()
+
 
 def set_environment():
     # https://github.com/mapbox/rasterio/commit/b621d92c51f7c2021f89cd4487cecdd7c201f320
@@ -68,9 +65,11 @@ def dataFileToS3Path(href):
 def stacFilePath(dataset, dim):
     return 'item/' + os.path.basename(dim).replace(".dim", "") + '_' + dataset + '.json'
 
+
 def identifyS1Dim(dim):
     tmp = re.search('sen1/(s1_[^/]*)/([^/]*.dim)', dim)
     return tmp.group(1), tmp.group(2)
+
 
 # https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md
 def dim2stac(inputfile, input_uri, baseurl, args):
@@ -91,7 +90,7 @@ def dim2stac(inputfile, input_uri, baseurl, args):
     try:
         temp = tempfile.NamedTemporaryFile(suffix=".dim")
         urlretrieve(input_uri, temp.name)
-    
+
         with open(temp.name) as fp:
             soup = BeautifulSoup(fp, "lxml")
 
@@ -102,8 +101,8 @@ def dim2stac(inputfile, input_uri, baseurl, args):
         datafile_format = soup.select("Dimap_Document > Data_Access > DATA_FILE_FORMAT")[0].get_text()
         assets = {}
 
-        with open(temp.name, 'r') as file :
-          dim_xml = file.read()
+        with open(temp.name, 'r') as file:
+            dim_xml = file.read()
 
         # Create STAC assets and modify DIM asset hrefs to HTTPS links
         for data_file in soup.select("Dimap_Document > Data_Access > Data_File"):
@@ -121,51 +120,50 @@ def dim2stac(inputfile, input_uri, baseurl, args):
 
         # Write the modified file
         with open(temp.name, 'w') as file:
-          file.write(dim_xml)
+            file.write(dim_xml)
 
         os.chdir(os.path.dirname(temp.name))
-        with rasterio.open(os.path.basename(temp.name)) as dataset:
-            # dataset.count = number of raster bands in dataset
-            time = dataset.tags()['PRODUCT_SCENE_RASTER_START_TIME']
 
-            time = datetime.strptime(time, '%d-%b-%Y %H:%M:%S.%f')
-            time = datetime.strftime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
+        ds = gdal.Open(os.path.basename(temp.name))
 
-            timeEnd = dataset.tags()['PRODUCT_SCENE_RASTER_STOP_TIME']
+        metadata = ds.GetMetadata_Dict()
 
-            timeEnd = datetime.strptime(timeEnd, '%d-%b-%Y %H:%M:%S.%f')
-            timeEnd = datetime.strftime(timeEnd, '%Y-%m-%dT%H:%M:%S.%fZ')
+        time = metadata['PRODUCT_SCENE_RASTER_START_TIME']
 
-            # TODO: ensure that this creates proper polygons and does not just transform corner points
-            geom = None
-            for g, val in rasterio.features.shapes(dataset.dataset_mask(), transform=dataset.transform):
-                geom = rasterio.warp.transform_geom(dataset.crs, 'EPSG:4326', g, precision=6)
+        time = datetime.strptime(time, '%d-%b-%Y %H:%M:%S.%f')
+        time = datetime.strftime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
 
-            bbox = rasterio.warp.transform_bounds(dataset.crs, 'EPSG:4326', dataset.bounds[0], dataset.bounds[1],
-                                                  dataset.bounds[2], dataset.bounds[3])
-            ret = {
-                'id': identifier,
-                'type': 'Feature',
-                'geometry': geom,
-                'bbox': bbox,
-                'properties': {
-                    'datetime': time,
-                    'title': title,
-                    'dtr:start_datetime': time,
-                    'dtr:end_datetime': timeEnd
-                },
-                'links': [{
-                    'href': linkTo(itemSpecFileName),
-                    'rel': 'self'
-                }],
-                'assets': assets
-            }
+        timeEnd = metadata['PRODUCT_SCENE_RASTER_STOP_TIME']
+
+        timeEnd = datetime.strptime(timeEnd, '%d-%b-%Y %H:%M:%S.%f')
+        timeEnd = datetime.strftime(timeEnd, '%Y-%m-%dT%H:%M:%S.%fZ')
+
+        geom, bbox = datasetUtils.get_geom_and_bbox_from_ds(ds)
+
+        ret = {
+            'id': identifier,
+            'type': 'Feature',
+            'geometry': geom,
+            'bbox': bbox,
+            'properties': {
+                'datetime': time,
+                'title': title,
+                'dtr:start_datetime': time,
+                'dtr:end_datetime': timeEnd
+            },
+            'links': [{
+                'href': linkTo(itemSpecFileName),
+                'rel': 'self'
+            }],
+            'assets': assets
+        }
 
     finally:
         temp.close()
         os.chdir(previous_cwd)
 
     return ret
+
 
 def list_dims(bucket, http_url, prefix):
     config = configparser.ConfigParser()
@@ -189,7 +187,7 @@ def list_dims(bucket, http_url, prefix):
     ret = []
 
     for page in pages:
-        ret = ret + list(map(lambda obj : obj.get("Key"), page.get("Contents", [])))
+        ret = ret + list(map(lambda obj: obj.get("Key"), page.get("Contents", [])))
 
     return ret
 
@@ -213,7 +211,6 @@ if __name__ == '__main__':
     this_node = int(node_regex.group(1))
     nodes_total = int(node_regex.group(2))
 
-
     skiplist = []
     try:
         with open("skiplist", 'r') as file:
@@ -234,38 +231,40 @@ if __name__ == '__main__':
     except FileNotFoundError:
         pass
 
+
     def dimNumber(dim):
         match = re.match('^.*_([0-9A-Za-z]+).dim$', dim)
         if match is None:
             return 0
         return int(match.group(1), 16)
 
+
     dims = list_dims(args.b, args.h_url, args.s3_prefix)
 
-    #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20181012_160705_160730_024105_02A29E.dim' ]
+    # dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20181012_160705_160730_024105_02A29E.dim' ]
 
-    #print('dims',dims)
-    #print('skiplist', skiplist)
+    # print('dims',dims)
+    # print('skiplist', skiplist)
 
     # Filter the ones for this processing node
-    dims = list(filter(lambda dim : (dimNumber(dim) % nodes_total) == (this_node-1), dims))
+    dims = list(filter(lambda dim: (dimNumber(dim) % nodes_total) == (this_node - 1), dims))
 
-    #print('---- dims for this node', dims)
+    # print('---- dims for this node', dims)
 
-    #print('---- dims without skiplist', dims)
+    # print('---- dims without skiplist', dims)
 
-    #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20170801_150845_151000_006748_00BDFA.dim' ]
+    # dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20170801_150845_151000_006748_00BDFA.dim' ]
 
-    #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20171103_152305_152420_008119_00E585.dim' ]
+    # dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20171103_152305_152420_008119_00E585.dim' ]
 
-    #dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20181013_150922_151037_024119_02A30E.dim' ]
+    # dims = [ 'sen1/s1_grd_meta_prep/S1_processed_20181013_150922_151037_024119_02A30E.dim' ]
 
     dims_to_process = []
 
     for dim in dims:
         dataset, dim_file = identifyS1Dim(dim)
         itemFileName = stacFilePath(dataset, dim_file)
-        
+
         if dim in skiplist:
             print('{}: in skiplist'.format(dim))
         elif os.path.isfile(itemFileName):
@@ -294,12 +293,11 @@ if __name__ == '__main__':
             raise
 
         except rasterio.errors.RasterioIOError as e:
-            err_msg = str(e);
+            err_msg = str(e)
             if err_msg == 'HTTP response code: 403':
                 print("{}: HTTP 403 error, adding to skiplist".format(dim))
                 with open("skiplist", 'a') as file:
-                    file.write(dim+"\n")
+                    file.write(dim + "\n")
 
         except Exception as e:
             print("{}: could not process, {}".format(dim, e))
-

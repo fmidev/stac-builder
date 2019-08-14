@@ -9,10 +9,9 @@ from pathlib import Path
 
 import boto3
 import distro
-import rasterio
-import rasterio.features
-import rasterio.warp
-from shapely.geometry import MultiPoint, mapping
+from osgeo import gdal
+
+import datasetUtils
 
 PRODUCTS = ["ndvi", "ndbi", "ndti", "ndsi", "ndmi"]
 
@@ -100,11 +99,9 @@ def tiff_to_stac(item_file_name, dates, products, baseurl):
     time_end = datetime.strptime(dates.split("_")[1], '%Y%m%d')
     time_end = datetime.strftime(time_end, '%Y-%m-%dT%H:%M:%S.%fZ')
 
-    with rasterio.open("/vsicurl/" + list(products.values())[0]) as dataset:
-        envelope = MultiPoint([(dataset.bounds[0], dataset.bounds[1]), (dataset.bounds[2], dataset.bounds[3])]).envelope
-        geom = rasterio.warp.transform_geom(dataset.crs, 'EPSG:4326', mapping(envelope), precision=6)
-        bbox = rasterio.warp.transform_bounds(dataset.crs, 'EPSG:4326', dataset.bounds[0], dataset.bounds[1],
-                                              dataset.bounds[2], dataset.bounds[3])
+    ds = gdal.Open("/vsicurl/" + list(products.values())[0])
+
+    geom, bbox = datasetUtils.get_geom_and_bbox_from_ds(ds)
 
     ret = {
         'id': identifier,
