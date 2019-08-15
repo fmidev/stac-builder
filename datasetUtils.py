@@ -5,8 +5,7 @@ from osgeo import ogr, osr
 from shapely.geometry import MultiPoint, mapping
 
 TGT_SRS = osr.SpatialReference()
-TGT_SRS.ImportFromEPSG(4326)
-
+TGT_SRS.ImportFromWkt('GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]]]')
 
 # https://gis.stackexchange.com/a/57837
 def get_extent(gt, cols, rows):
