@@ -75,15 +75,15 @@ def list_products(bucket, http_url, prefix):
 
 
 def stac_file_path(date_range):
-    return "item/S2_{}.json".format(date_range)
+    return "item/S2M_{}.json".format(date_range)
 
 
 def tiff_to_stac(item_file_name, dates, products, baseurl):
     def link_to(link):
         return os.path.join(baseurl, link)
 
-    identifier = "S2_{}".format(dates)
-    title = "Sentinel 2 - {}".format(dates)
+    identifier = "S2M_{}".format(dates)
+    title = "Sentinel 2 mosaics - {}".format(dates)
 
     assets = {
         product_name: {
