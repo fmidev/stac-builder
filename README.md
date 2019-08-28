@@ -1,6 +1,7 @@
 # Stac-builder
 
 This is a prototype utility to convert BEAM-DIMAP metadata into STAC items (https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md)
+The resulting catalogs are in use at https://pta.fmi.fi/ for demonstration
 
 The tool has three parts:
 * `tiff2stac.py` - lists geotiff files on S3 and produces STAC items of them (items are written in the folder `item/`) for Sentinel 2 mosaics
