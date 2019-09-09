@@ -2,6 +2,7 @@
 import configparser
 import json
 import os
+import re
 from argparse import ArgumentParser
 from collections import defaultdict
 from datetime import datetime
@@ -13,15 +14,17 @@ from osgeo import gdal
 
 import datasetUtils
 
-PRODUCTS = ["ndvi", "ndbi", "ndti", "ndsi", "ndmi"]
-
+#PRODUCTS = ["ndvi", "ndbi", "ndti", "ndsi", "ndmi"]
+PRODUCTS = ["vv_min","vv_max","vv_mean","vv_std","vvvh_mean","vh_min","vh_max","vh_mean","vh_std"]
 
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument('--s3cfg', default=str(Path.home()) + '/.s3cfg',
                         help='S3 config file location (default: %(default)s)')
-    parser.add_argument('-b', default='bucket', help='S3 bucket (default: %(default)s)')
-    parser.add_argument('--b_url', default='s3.amazonaws.com',
+    parser.add_argument('-b', default='ptat', help='S3 bucket (default: %(default)s)')
+    parser.add_argument('-i', default='S1', help='File ID (default: %(default)s)')
+    parser.add_argument('-t', default='Sentinel 1 scene', help='Product title (default: %(default)s)')
+    parser.add_argument('--b_url', default='pta.data.lit.fmi.fi',
                         help='Catalog base url (default: %(default)s)')
     parser.add_argument('--h_url', default='https://base.url',
                         help='Http base url for S3 files (default: %(default)s)')
@@ -44,7 +47,12 @@ def set_environment():
 
 def list_products(bucket, http_url, prefix):
     def get_date(image):
-        return image[-21:-4]
+        x = re.search(r"\d{8}-\d{8}",image)
+        if x is None:
+            res=image[56:73]
+        else:
+            res = x.group(0)
+        return res
 
     def flatten(image_products):
         res = defaultdict(dict)
@@ -75,15 +83,15 @@ def list_products(bucket, http_url, prefix):
 
 
 def stac_file_path(date_range):
-    return "item/S2M_{}.json".format(date_range)
+    return "item/S1M_{}.json".format(date_range)
 
 
 def tiff_to_stac(item_file_name, dates, products, baseurl):
     def link_to(link):
         return os.path.join(baseurl, link)
 
-    identifier = "S2M_{}".format(dates)
-    title = "Sentinel 2 mosaics - {}".format(dates)
+    identifier = "S1M_{}".format(dates)
+    title = "Sentinel 1 mosaics - {}".format(dates)
 
     assets = {
         product_name: {
@@ -93,10 +101,10 @@ def tiff_to_stac(item_file_name, dates, products, baseurl):
         } for product_name, url in products.items()
     }
 
-    time = datetime.strptime(dates.split("_")[0], '%Y%m%d')
+    time = datetime.strptime(dates.split("-")[0], '%Y%m%d')
     time = datetime.strftime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
 
-    time_end = datetime.strptime(dates.split("_")[1], '%Y%m%d')
+    time_end = datetime.strptime(dates.split("-")[1], '%Y%m%d')
     time_end = datetime.strftime(time_end, '%Y-%m-%dT%H:%M:%S.%fZ')
 
     ds = gdal.Open("/vsicurl/" + list(products.values())[0])
