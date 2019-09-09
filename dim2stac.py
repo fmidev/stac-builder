@@ -14,12 +14,12 @@ from urllib.request import urlretrieve
 
 import boto3
 import distro
-import rasterio.warp
+#import rasterio.warp
 from bs4 import BeautifulSoup
 from osgeo import gdal
 
 import datasetUtils
-
+gdal.UseExceptions()
 
 def parse_args():
     parser = ArgumentParser()
@@ -292,7 +292,7 @@ if __name__ == '__main__':
         except KeyboardInterrupt:
             raise
 
-        except rasterio.errors.RasterioIOError as e:
+        except RuntimeError as e:
             err_msg = str(e)
             if err_msg == 'HTTP response code: 403':
                 print("{}: HTTP 403 error, adding to skiplist".format(dim))
