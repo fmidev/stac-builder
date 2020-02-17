@@ -31,6 +31,8 @@ def parse_args():
                         help='Http base url for S3 files (default: %(default)s)')
     parser.add_argument('--s3_prefix', default='prefix',
                         help='S3 prefix for products to be listed (default: %(default)s)')
+    parser.add_argument('--collection', default='fmi-open-satellite-data.json',
+                        help='Collection for products to be listed (default: %(default)s)')
     parser.set_defaults(all=True)
 
     return parser.parse_args()
@@ -83,12 +85,12 @@ def stac_file_path(date_range):
     return "item/S2RM_{}.json".format(date_range)
 
 
-def tiff_to_stac(item_file_name, dates, products, baseurl):
+def tiff_to_stac(item_file_name, dates, products, baseurl, collection):
     def link_to(link):
         return os.path.join(baseurl, link)
 
     identifier = "S2RM_{}".format(dates)
-    title = "Sentinel 2 reflectance mosaics - {}".format(dates)
+    title = "Sentinel 2 surface reflectance mosaics - {}".format(dates)
 
     assets = {
         product_name: {
@@ -120,8 +122,10 @@ def tiff_to_stac(item_file_name, dates, products, baseurl):
             'dtr:end_datetime': time_end
         },
         'links': [{
-            'href': link_to(item_file_name),
-            'rel': 'self'
+            'rel': 'collection',
+            'href': link_to(collection),
+            'rel': 'self',
+            'href': link_to(item_file_name)
         }],
         'assets': assets
     }
@@ -142,6 +146,6 @@ if __name__ == '__main__':
             print('{}: already processed ({})'.format(dates, item_file_name))
         else:
             print('{}: processing'.format(dates))
-            data = tiff_to_stac(item_file_name, dates, products, args.b_url)
+            data = tiff_to_stac(item_file_name, dates, products, args.b_url, args.collection)
             with open(item_file_name, "w") as outputfile:
                 outputfile.write(json.dumps(data, indent=2))
