@@ -116,7 +116,15 @@ def dim2stac(inputfile, input_uri, baseurl, args):
             }
 
             # Replace href in the XML (dirty, but works in this case as the DIMs are homogenous in this sense)
-            dim_xml = dim_xml.replace('"{}"'.format(href), '"/vsicurl/{}"'.format(datafile_uri))
+            if '/vsicurl' in href:
+                dim_xml = dim_xml.replace('"{}"'.format(href), '"{}"'.format(datafile_uri))
+            elif 'http' in href:
+                dim_xml = dim_xml.replace('"{}"'.format(href), '"/vsicurl/{}"'.format(datafile_uri))
+            elif '../sen1' in href:
+                dim_xml = dim_xml.replace('"../{}"'.format(href), '"/vsicurl/https://pta.data.lit.fmi.fi/{}"'.format(datafile_uri))
+            elif '/sen1' in href:
+                dim_xml = dim_xml.replace('"{}"'.format(href), '"/vsicurl/https://pta.data.lit.fmi.fi/{}"'.format(datafile_uri))
+        
 
         # Write the modified file
         with open(temp.name, 'w') as file:
