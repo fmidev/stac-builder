@@ -12,7 +12,7 @@ GDAL>=2.4.0
 Geohash==1.0
 geojson==2.4.1
 jmespath==0.9.4
-lxml==4.3.4
+lxml==4.6.2
 numpy==1.16.4
 polygon-geohasher==0.0.1
 pyparsing==2.4.0
