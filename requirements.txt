@@ -1,4 +1,4 @@
-urllib3==1.25.4
+urllib3==1.26.5
 boto3==1.17.102
 GDAL==3.2.2
 shapely==1.7.1
