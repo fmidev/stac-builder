@@ -1,9 +1,4 @@
-data/
-.idea/
-venv/
-__pycache__/
-catalog
-catalog.json
-item
-root.json
-skiplist
+stac_builder/__pycache__/
+stac_builder/configuration_files/s3-config.json
+stac_builder/items/
+stac_builder/catalog/

@@ -1,0 +1,355 @@
+{
+    "datasetId": "Metsavarateema",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["mvmi/bm_manty_runkokuori", "mvmi/bm_lehtip_runkokuori", "mvmi/bm_kuusi_runkokuori", "mvmi/bm_manty_juuret", "mvmi/bm_kuusi_juuret", "mvmi/bm_lehtip_juuret", 
+        "mvmi/bm_manty_kanto", "mvmi/bm_kuusi_kanto", "mvmi/bm_lehtip_kanto",
+        "mvmi/bm_manty_neulaset", "mvmi/bm_kuusi_neulaset", "mvmi/bm_lehtip_neulaset",
+        "mvmi/bm_manty_latva", "mvmi/bm_kuusi_latva", "mvmi/bm_lehtip_latva", 
+        "mvmi/bm_manty_latva", "mvmi/bm_kuusi_latva", "mvmi/bm_lehtip_latva",
+        "mvmi/bm_manty_elavatoksat", "mvmi/bm_kuusi_elavatoksat", "mvmi/bm_lehtip_elavatoksat",
+        "mvmi/bm_manty_kuolleetoksat", "mvmi/bm_kuusi_kuolleetoksat", "mvmi/bm_lehtip_kuolleetoksat",
+        "mvmi/ika", "mvmi/fra_luokka", "mvmi/kasvupaikka", "mvmi/keskipituus", "mvmi/keskilapimitta", 
+        "mvmi/kuusitukki", "mvmi/kuusikuitu", "mvmi/koivutukki", "mvmi/koivukuitu", "mvmi/mantytukki", "mvmi/mantykuitu", "mvmi/muulptukki", "mvmi/muulpkuitu",
+        "mvmi/latvuspeitto", "mvmi/lehtip_latvuspeitto", "mvmi/manty", "mvmi/koivu", "mvmi/kuusi", "mvmi/muulp", "mvmi/maaluokka", "mvmi/mista", "mvmi/paatyyppi", "mvmi/ppa", "mvmi/tilavuus",
+        "mvmi/bm_manty_lehdet", "mvmi/bm_kuusi_lehdet", "mvmi/bm_lehtip_lehdet"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Metsavarateema/",
+      "localCatalogPath": "catalog/Metsavarateema/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/metsavarateema/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/metsavarateema/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Metsavarateema",
+        "title": "Monilähdeinventoinnin Metsävarateema",
+        "description": "LUKE Monilahdeinvetoinnin 45 metsavarateema",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "name": "bm_manty_runkokuori",
+                  "min": 0,
+                  "max": 8000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_runkokuori",
+                  "min": 0,
+                  "max": 8000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_runkokuori",
+                  "min": 0,
+                  "max": 8000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_manty_juuret",
+                  "min": 0,
+                  "max": 32766,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_juuret",
+                  "min": 0,
+                  "max": 4000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_juuret",
+                  "min": 0,
+                  "max": 4000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_manty_kanto",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_kanto",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_kanto",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_manty_neulaset",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_neulaset",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_neulaset",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_manty_latva",
+                  "min": 0,
+                  "max": 4000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_latva",
+                  "min": 0,
+                  "max": 4000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_latva",
+                  "min": 0,
+                  "max": 4000,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_manty_elavatoksat",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_elavatoksat",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_elavatoksat",
+                  "min": 0,
+                  "max": 2400,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_manty_kuolleetoksat",
+                  "min": 0,
+                  "max": 300,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_kuusi_kuolleetoksat",
+                  "min": 0,
+                  "max": 300,
+                  "NoData": 32767
+              },
+              {
+                  "name": "bm_lehtip_kuolleetoksat",
+                  "min": 0,
+                  "max": 300,
+                  "NoData": 32767
+              },
+              {
+                  "name": "ika",
+                  "min": 1800,
+                  "max": 2055,
+                  "NoData": 32767
+              },
+              {
+                  "name": "fra_luokka",
+                  "min": 1,
+                  "max": 4,
+                  "NoData": 32767
+              },
+              {
+                  "name": "kasvupaikka",
+                  "min": 1,
+                  "max": 10,
+                  "NoData": 32767
+              },
+              {
+                  "name": "keskipituus",
+                  "min": 0,
+                  "max": 255,
+                  "NoData": 32767
+              },
+              {
+                  "name": "keskilapimitta",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "kuusitukki",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "kuusikuitu",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "koivutukki",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "koivukuitu",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "mantytukki",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "mantykuitu",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "muulptukki",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "muulpkuitu",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "latvuspeitto",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "lehtip_latvuspeitto",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "manty",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "koivu",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "kuusi",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "muulp",
+                  "min": 0,
+                  "max": 200,
+                  "NoData": 32767
+              },
+              {
+                  "name": "maaluokka",
+                  "min": 1,
+                  "max": 3,
+                  "NoData": 32767
+              },
+              {
+                  "name": "mista",
+                  "min": 1,
+                  "max": 4,
+                  "NoData": 32767
+              },
+              {
+                  "name": "paatyyppi",
+                  "min": 1,
+                  "max": 4,
+                  "NoData": 32767
+              },
+              {
+                  "name": "ppa",
+                  "min": 0,
+                  "max": 100,
+                  "NoData": 32767
+              },
+              {
+                  "name": "tilavuus",
+                  "min": 0,
+                  "max": 360,
+                  "NoData": 32767
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosittain jaettu katalogitaso LUKE Monilahdeinvetoinnin 45 metsavarateema -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^(?P<band>.*)_vmi1x_(?P<startdate>[0-2][0-9])(?P<enddate>[0-2][0-9]).tif$",
+      "idTemplate": "Metsavarateema_startdate_enddate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

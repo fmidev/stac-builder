@@ -1,0 +1,65 @@
+{
+    "datasetId": "Sentinel-1_osakuvat_descending",
+    "source": null,
+    "destination": {
+      "localItemPath": "items/Sentinel-1_osakuvat/",
+      "localCatalogPath": "catalog/Sentinel-1_osakuvat_desc/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_osakuvat_desc/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_osakuvat/"
+    },
+    "dataset": {
+      "selectItemsMatching": {
+        "properties.orbit": "DESCENDING"
+      },
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-1_osakuvat_desc",
+        "title": "Sentinel-1 osakuvat, descending",
+        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat. Orbit: descending.",
+        "license": "proprietary",
+        "links": [
+          {
+            "rel": "license",
+            "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+            "title": "License"
+          }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                "band": "vv",
+                "min": -40,
+                "max": 5,
+                "NoData": 0
+              },
+              {
+                "band": "vh",
+                "min": -40,
+                "max": 5,
+                "NoData": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame": "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausiin jaettu katalogitaso Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat -aineistolle. Orbit: descending.",
+        "license": "proprietary",
+        "links": [
+          {
+            "rel": "license",
+            "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+            "title": "License"
+          }
+        ]
+      }
+    }
+  }

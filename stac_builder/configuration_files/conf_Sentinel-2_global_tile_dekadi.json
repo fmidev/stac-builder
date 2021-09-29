@@ -1,0 +1,302 @@
+{
+    "datasetId": "Sentinel-2_global_tile_dekadi",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["sen2/tiles/33VXK", 
+        "sen2/tiles/33VXL",
+        "sen2/tiles/33WXM",
+        "sen2/tiles/33WXN",
+        "sen2/tiles/33WXP",
+        "sen2/tiles/33WXQ",
+        "sen2/tiles/33WXR",
+        "sen2/tiles/33WXS",
+        "sen2/tiles/33WXT",
+        "sen2/tiles/34VCL",
+        "sen2/tiles/34VCM",
+        "sen2/tiles/34VCN",
+        "sen2/tiles/34VCP",
+        "sen2/tiles/34VCQ",
+        "sen2/tiles/34VCR",
+        "sen2/tiles/34VDL",
+        "sen2/tiles/34VDM",
+        "sen2/tiles/34VDN",
+        "sen2/tiles/34VDP",
+        "sen2/tiles/34VDQ",
+        "sen2/tiles/34VDR",
+        "sen2/tiles/34VEL",
+        "sen2/tiles/34VEM",
+        "sen2/tiles/34VEN",
+        "sen2/tiles/34VEP",
+        "sen2/tiles/34VEQ",
+        "sen2/tiles/34VER",
+        "sen2/tiles/34VFL",
+        "sen2/tiles/34VFM",
+        "sen2/tiles/34VFN",
+        "sen2/tiles/34VFP",
+        "sen2/tiles/34VFQ",
+        "sen2/tiles/34VFR",
+        "sen2/tiles/34WDA",
+        "sen2/tiles/34WDB",
+        "sen2/tiles/34WDC",
+        "sen2/tiles/34WDS",
+        "sen2/tiles/34WDT",
+        "sen2/tiles/34WDU",
+        "sen2/tiles/34WDV",
+        "sen2/tiles/34WEA",
+        "sen2/tiles/34WEB",
+        "sen2/tiles/34WEC",
+        "sen2/tiles/34WES",
+        "sen2/tiles/34WET",
+        "sen2/tiles/34WEU",
+        "sen2/tiles/34WEV",
+        "sen2/tiles/34WFA",
+        "sen2/tiles/34WFB",
+        "sen2/tiles/34WFC",
+        "sen2/tiles/34WFS",
+        "sen2/tiles/34WFT",
+        "sen2/tiles/34WFU",
+        "sen2/tiles/34WFV",
+        "sen2/tiles/35VLF",
+        "sen2/tiles/35VLG",
+        "sen2/tiles/35VLH",
+        "sen2/tiles/35VLJ",
+        "sen2/tiles/35VLK",
+        "sen2/tiles/35VLL",
+        "sen2/tiles/35VMF",
+        "sen2/tiles/35VMG",
+        "sen2/tiles/35VMH",
+        "sen2/tiles/35VMJ",
+        "sen2/tiles/35VMK",
+        "sen2/tiles/35VML",
+        "sen2/tiles/35VNF",
+        "sen2/tiles/35VNG",
+        "sen2/tiles/35VNH",
+        "sen2/tiles/35VNJ",
+        "sen2/tiles/35VNK",
+        "sen2/tiles/35VNL",
+        "sen2/tiles/35VPF",
+        "sen2/tiles/35VPG",
+        "sen2/tiles/35VPH",
+        "sen2/tiles/35VPJ",
+        "sen2/tiles/35VPK",
+        "sen2/tiles/35VPL",
+        "sen2/tiles/35WMM",
+        "sen2/tiles/35WMN",
+        "sen2/tiles/35WMP",
+        "sen2/tiles/35WMQ",
+        "sen2/tiles/35WMR",
+        "sen2/tiles/35WMS",
+        "sen2/tiles/35WMT",
+        "sen2/tiles/35WNM",
+        "sen2/tiles/35WNN",
+        "sen2/tiles/35WNP",
+        "sen2/tiles/35WNQ",
+        "sen2/tiles/35WNR",
+        "sen2/tiles/35WNS",
+        "sen2/tiles/35WNT",
+        "sen2/tiles/35WPM",
+        "sen2/tiles/35WPN",
+        "sen2/tiles/35WPP",
+        "sen2/tiles/35WPQ",
+        "sen2/tiles/35WPR",
+        "sen2/tiles/35WPS",
+        "sen2/tiles/35WPT",
+        "sen2/tiles/36VUL",
+        "sen2/tiles/36VUM",
+        "sen2/tiles/36VUN",
+        "sen2/tiles/36VUP",
+        "sen2/tiles/36VUQ",
+        "sen2/tiles/36VUR",
+        "sen2/tiles/36VVL",
+        "sen2/tiles/36VVM",
+        "sen2/tiles/36VVN",
+        "sen2/tiles/36VVP",
+        "sen2/tiles/36VVQ",
+        "sen2/tiles/36VVR",
+        "sen2/tiles/36WVA",
+        "sen2/tiles/36WVB",
+        "sen2/tiles/36WVC",
+        "sen2/tiles/36WVS",
+        "sen2/tiles/36WVT",
+        "sen2/tiles/36WVU",
+        "sen2/tiles/36WVV"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-2_global_tile_dekadi/",
+      "localCatalogPath": "catalog/Sentinel-2_global_tile_dekadi/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-2_global_tile_dekadi",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-2_global_tile_dekadi/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-2_global_tile_dekadi",
+        "title": "Sentinel-2 Global tile (dekadi)",
+        "description": "Sentinel-2 Global tilet kanavittain pintaheijastussuhde dekadi",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "b01",
+                  "min": 1200,
+                  "max": 2800
+              },
+              {
+                "band": "b02",
+                "min": 0,
+                "max": 2000
+              },
+              {
+                  "band": "b03",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "b04",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "b05",
+                  "min": 400,
+                  "max": 3300
+              },
+              {
+                  "band": "b06",
+                  "min": 300,
+                  "max": 4000
+              },
+              {
+                  "band": "b07",
+                  "min": 300,
+                  "max": 4600
+              },
+              {
+                  "band": "b08",
+                  "min": 300,
+                  "max": 4300
+              },
+              {
+                  "band": "b8a",
+                  "min": 300,
+                  "max": 5000
+              },
+              {
+                  "band": "b11",
+                  "min": 100,
+                  "max": 4000
+              },
+              {
+                  "band": "b12",
+                  "min": 50,
+                  "max": 3500
+              },
+              {
+                  "band": "view_azimuth_mean",
+                  "min": 2300,
+                  "max": 32767
+              },
+              {
+                  "band": "sun_azimuth",
+                  "min": 16000,
+                  "max": 19012
+              },
+              {
+                  "band": "view_zenith_mean",
+                  "min": 95,
+                  "max": 1194
+              },
+              {
+                  "band": "sun_zenith",
+                  "min": 3580,
+                  "max": 8532
+              },
+              {
+                  "band": "medoid_mos",
+                  "min": 97,
+                  "max": 16698
+              },
+              {
+                  "band": "source_index",
+                  "min": 0,
+                  "max": 2407
+              },
+              {
+                  "band": "quality_aot",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "valid_obs",
+                  "min": 0,
+                  "max": 200
+              },
+              {
+                  "band": "quality_scene_classification",
+                  "min": 0,
+                  "max": 11
+              },
+              {
+                  "band": "quality_snow_confidence",
+                  "min": 0,
+                  "max": 100
+              },
+              {
+                  "band": "quality_cloud_confidence",
+                  "min": 0,
+                  "max": 100
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausiin jaettu katalogitaso Sentinel-2 Global tilet kanavittain pintaheijastussuhde dekadi -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "(?P<band>.*)_T20_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<tile>.{5}).tiff$",
+      "idTemplate": "Sentinel-2_global_tile_dekadi_startdate_tile_id",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

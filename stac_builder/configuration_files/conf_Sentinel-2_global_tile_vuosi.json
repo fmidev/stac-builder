@@ -1,0 +1,302 @@
+{
+    "datasetId": "Sentinel-2_global_tile_vuosi",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["sen2/tiles/y10/33VXK",
+        "sen2/tiles/y10/33VXL",
+        "sen2/tiles/y10/33WXM",
+        "sen2/tiles/y10/33WXN",
+        "sen2/tiles/y10/33WXP",
+        "sen2/tiles/y10/33WXQ",
+        "sen2/tiles/y10/33WXR",
+        "sen2/tiles/y10/33WXS",
+        "sen2/tiles/y10/33WXT",
+        "sen2/tiles/y10/34VCL",
+        "sen2/tiles/y10/34VCM",
+        "sen2/tiles/y10/34VCN",
+        "sen2/tiles/y10/34VCP",
+        "sen2/tiles/y10/34VCQ",
+        "sen2/tiles/y10/34VCR",
+        "sen2/tiles/y10/34VDL",
+        "sen2/tiles/y10/34VDM",
+        "sen2/tiles/y10/34VDN",
+        "sen2/tiles/y10/34VDP",
+        "sen2/tiles/y10/34VDQ",
+        "sen2/tiles/y10/34VDR",
+        "sen2/tiles/y10/34VEL",
+        "sen2/tiles/y10/34VEM",
+        "sen2/tiles/y10/34VEN",
+        "sen2/tiles/y10/34VEP",
+        "sen2/tiles/y10/34VEQ",
+        "sen2/tiles/y10/34VER",
+        "sen2/tiles/y10/34VFL",
+        "sen2/tiles/y10/34VFM",
+        "sen2/tiles/y10/34VFN",
+        "sen2/tiles/y10/34VFP",
+        "sen2/tiles/y10/34VFQ",
+        "sen2/tiles/y10/34VFR",
+        "sen2/tiles/y10/34WDA",
+        "sen2/tiles/y10/34WDB",
+        "sen2/tiles/y10/34WDC",
+        "sen2/tiles/y10/34WDS",
+        "sen2/tiles/y10/34WDT",
+        "sen2/tiles/y10/34WDU",
+        "sen2/tiles/y10/34WDV",
+        "sen2/tiles/y10/34WEA",
+        "sen2/tiles/y10/34WEB",
+        "sen2/tiles/y10/34WEC",
+        "sen2/tiles/y10/34WES",
+        "sen2/tiles/y10/34WET",
+        "sen2/tiles/y10/34WEU",
+        "sen2/tiles/y10/34WEV",
+        "sen2/tiles/y10/34WFA",
+        "sen2/tiles/y10/34WFB",
+        "sen2/tiles/y10/34WFC",
+        "sen2/tiles/y10/34WFS",
+        "sen2/tiles/y10/34WFT",
+        "sen2/tiles/y10/34WFU",
+        "sen2/tiles/y10/34WFV",
+        "sen2/tiles/y10/35VLF",
+        "sen2/tiles/y10/35VLG",
+        "sen2/tiles/y10/35VLH",
+        "sen2/tiles/y10/35VLJ",
+        "sen2/tiles/y10/35VLK",
+        "sen2/tiles/y10/35VLL",
+        "sen2/tiles/y10/35VMF",
+        "sen2/tiles/y10/35VMG",
+        "sen2/tiles/y10/35VMH",
+        "sen2/tiles/y10/35VMJ",
+        "sen2/tiles/y10/35VMK",
+        "sen2/tiles/y10/35VML",
+        "sen2/tiles/y10/35VNF",
+        "sen2/tiles/y10/35VNG",
+        "sen2/tiles/y10/35VNH",
+        "sen2/tiles/y10/35VNJ",
+        "sen2/tiles/y10/35VNK",
+        "sen2/tiles/y10/35VNL",
+        "sen2/tiles/y10/35VPF",
+        "sen2/tiles/y10/35VPG",
+        "sen2/tiles/y10/35VPH",
+        "sen2/tiles/y10/35VPJ",
+        "sen2/tiles/y10/35VPK",
+        "sen2/tiles/y10/35VPL",
+        "sen2/tiles/y10/35WMM",
+        "sen2/tiles/y10/35WMN",
+        "sen2/tiles/y10/35WMP",
+        "sen2/tiles/y10/35WMQ",
+        "sen2/tiles/y10/35WMR",
+        "sen2/tiles/y10/35WMS",
+        "sen2/tiles/y10/35WMT",
+        "sen2/tiles/y10/35WNM",
+        "sen2/tiles/y10/35WNN",
+        "sen2/tiles/y10/35WNP",
+        "sen2/tiles/y10/35WNQ",
+        "sen2/tiles/y10/35WNR",
+        "sen2/tiles/y10/35WNS",
+        "sen2/tiles/y10/35WNT",
+        "sen2/tiles/y10/35WPM",
+        "sen2/tiles/y10/35WPN",
+        "sen2/tiles/y10/35WPP",
+        "sen2/tiles/y10/35WPQ",
+        "sen2/tiles/y10/35WPR",
+        "sen2/tiles/y10/35WPS",
+        "sen2/tiles/y10/35WPT",
+        "sen2/tiles/y10/36VUL",
+        "sen2/tiles/y10/36VUM",
+        "sen2/tiles/y10/36VUN",
+        "sen2/tiles/y10/36VUP",
+        "sen2/tiles/y10/36VUQ",
+        "sen2/tiles/y10/36VUR",
+        "sen2/tiles/y10/36VVL",
+        "sen2/tiles/y10/36VVM",
+        "sen2/tiles/y10/36VVN",
+        "sen2/tiles/y10/36VVP",
+        "sen2/tiles/y10/36VVQ",
+        "sen2/tiles/y10/36VVR",
+        "sen2/tiles/y10/36WVA",
+        "sen2/tiles/y10/36WVB",
+        "sen2/tiles/y10/36WVC",
+        "sen2/tiles/y10/36WVS",
+        "sen2/tiles/y10/36WVT",
+        "sen2/tiles/y10/36WVU",
+        "sen2/tiles/y10/36WVV"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-2_global_tile_vuosi/",
+      "localCatalogPath": "catalog/Sentinel-2_global_tile_vuosi/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-2_global_tile_vuosi/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-2_global_tile_vuosi/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-2_global_tile_vuosi",
+        "title": "Sentinel-2 Global tile (vuosi)",
+        "description": "Sentinel-2 Global tilet kanavittain pintaheijastussuhde vuosi",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "b01",
+                  "min": 1200,
+                  "max": 2800
+              },
+              {
+                "band": "b02",
+                "min": 0,
+                "max": 2000
+              },
+              {
+                  "band": "b03",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "b04",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "b05",
+                  "min": 400,
+                  "max": 3300
+              },
+              {
+                  "band": "b06",
+                  "min": 300,
+                  "max": 4000
+              },
+              {
+                  "band": "b07",
+                  "min": 300,
+                  "max": 4600
+              },
+              {
+                  "band": "b08",
+                  "min": 300,
+                  "max": 4300
+              },
+              {
+                  "band": "b8a",
+                  "min": 300,
+                  "max": 5000
+              },
+              {
+                  "band": "b11",
+                  "min": 100,
+                  "max": 4000
+              },
+              {
+                  "band": "b12",
+                  "min": 50,
+                  "max": 3500
+              },
+              {
+                  "band": "view_azimuth_mean",
+                  "min": 2300,
+                  "max": 32767
+              },
+              {
+                  "band": "sun_azimuth",
+                  "min": 16000,
+                  "max": 19012
+              },
+              {
+                  "band": "view_zenith_mean",
+                  "min": 95,
+                  "max": 1194
+              },
+              {
+                  "band": "sun_zenith",
+                  "min": 3580,
+                  "max": 8532
+              },
+              {
+                  "band": "medoid_mos",
+                  "min": 97,
+                  "max": 16698
+              },
+              {
+                  "band": "source_index",
+                  "min": 0,
+                  "max": 2407
+              },
+              {
+                  "band": "quality_aot",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "valid_obs",
+                  "min": 0,
+                  "max": 200
+              },
+              {
+                  "band": "quality_scene_classification",
+                  "min": 0,
+                  "max": 11
+              },
+              {
+                  "band": "quality_snow_confidence",
+                  "min": 0,
+                  "max": 100
+              },
+              {
+                  "band": "quality_cloud_confidence",
+                  "min": 0,
+                  "max": 100
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosiin jaettu katalogitaso Sentinel-2 Global tilet kanavittain pintaheijastussuhde vuosi -aineistolle",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "(?P<band>.*)_Y10_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<tile>.{5}).tiff$",
+      "idTemplate": "Sentinel-2_global_tile_vuosi_startdate_tile_id",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+        }
+    ]
+    }
+  }
+}

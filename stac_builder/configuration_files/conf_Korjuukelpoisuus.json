@@ -1,0 +1,81 @@
+{
+    "datasetId": "Korjuukelpoisuus",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["geo/harvestability"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Korjuukelpoisuus/",
+      "localCatalogPath": "catalog/Korjuukelpoisuus/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/korjuukelpoisuus/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/korjuukelpoisuus/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Korjuukelpoisuus",
+        "title": "Korjuukelpoisuus",
+        "description": "Korjuukelpoisuus",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "korjuukelpoisuus",
+                  "min": 0,
+                  "max": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausittain jaettu katalogitaso Korjuukelpoisuus -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^KKL_SMK_Suomi_(?P<startdate>[1-2][0-9]{3}_[0-1][0-9]_[0-3][0-9])-UTM35.tif$",
+      "idTemplate": "Korjuukelpoisuus_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "bandname": "korjuukelpoisuus",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

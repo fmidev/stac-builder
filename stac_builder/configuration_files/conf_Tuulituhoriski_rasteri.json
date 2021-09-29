@@ -1,0 +1,81 @@
+{
+    "datasetId": "Tuulituhoriski",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["met/wgfd"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Tuulituhoriski/",
+      "localCatalogPath": "catalog/Tuulituhoriski/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/tuulituhoriski/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/tuulituhoriski/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Tuulituhoriski",
+        "title": "Tuulituhoriski",
+        "description": "Tuulituhoriski rasterina",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+              "name": "tuulituhoriski",
+              "min": 5,
+              "max": 30
+              }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "week",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Viikoittain jaettu katalogitaso Tuulituhoriski rasterina -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^Tuuli_(?P<startdate>[1-2][0-9]{3}-[0-1][0-9]-[0-3][0-9])_WG_KED.tif$",
+      "idTemplate": "Tuulituhoriski_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "bandname": "tuulituhoriski",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

@@ -1,39 +1,150 @@
-# Stac-builder
+# STAC builder for Tuulituhohaukka
 
-This is a prototype utility to convert BEAM-DIMAP metadata into STAC items (https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md)
-The resulting catalogs are in use at https://pta.fmi.fi/ for demonstration
+## Devcontainer
 
-The tool has several parts:
-* `tiff2stac.py` - lists geotiff files on S3 and produces STAC items of them (items are written in the folder `item/`) for Sentinel 1 mosaics
-* `s2?m-tiff2stac.py` - same as above, but for Sentinel 2 mosaics (and other xxx-tiff2stac.py for other cog resources)
-* `dim2stac.py` - lists DIM files on S3 and produces STAC items of them (items are written in the folder `item/`) for S1 single images
-* `stac-item2index.py` - creates a stac catalog of the STAC items in folder `item/` (catalog files are written in the folder `catalog/`)
+This application uses VSCode devcontainers to normalize the development environment. The project may however be developed and built also without devcontainers. However using the devcontainer guarantees that every developer is using the same development and build environment.
 
-## Requirements
+You can read more about devcontainers [here](https://code.visualstudio.com/docs/remote/containers).
 
-The prototype is built using Python 3.6 and a bunch of other tools. Development was done on Ubuntu 18.04. The Python packages used are listed in requirements.txt.
+## Run STAC builder 
+### How does it work?
+STAC builder builds a Spatio Temporal Asset Catalog according to [STAC 1.0.0 version specifications](https://github.com/radiantearth/stac-spec). The builder reads URLs from Amazon S3 service, extracts necessary information and builds item objects. Then, based on the existing items, dataset-time and dataset collections are created. 
 
-GDAL 2.4.0 is also required (3.0.1 also works), for Ubuntu, you can install it using the [UbuntuGIS PPA](https://launchpad.net/~ubuntugis/+archive/ubuntu/ppa)
+The items are written locally to your computer. The item builder (item_builder.py) reads item.template -field from the configuration file, and uses this information to complete the items. If you want to add information to the item objects, you can modify this field in the configuration file. New items are created whenever an item with a unique time-stamp is found. The existing item is updated when new assets or bands of that item are found. Existing items are not re-written in any other way than by adding assets or bands to it. Note: This means that when you run the script, it will only process items and assets that do not exist yet. It also means that if you make some changes to the template of the items, you need to delete all existing items to make the changes visible to them. The tool may also process metadata from (.dim) files and include that in the resulting items.
 
-## Usage
+The dataset and dataset-time collections are re-written every time you run the script. The catalog builder (catalog_builder.py) reads dataset.template and dataset-time.template -fields from the configuration file, and uses this information to complete the collections. If you want to add information to the collection objects, you can modify this field in the configuration file.
 
-You need to have a s3cmd configuration file with the right access keys and host_base configuration. 
+### How do you use it?
+You can build the Spatio Temporal Asset Catalog (STAC) by running the python script **stac_builder.py**.
 
-### Sentinel 2 (same for S1 mosaics with s3_prefix sen1/s1m_grd
 
-`python3 s2m-tiff2stac.py -b pta --s3_prefix sen2/s2m --h_url https://pta.data.lit.fmi.fi/ --b_url https://pta.data.lit.fmi.fi/stac/`
+Run the script by giving it as input the location of the dataset's configuration file and the location of s3 configuration file, writing 
 
-### Sentinel 1 (dims)
 
-`python3 dim2stac.py -b pta --s3_prefix sen1/s1_grd_meta_prep --h_url https://pta.data.lit.fmi.fi/ --b_url https://pta.data.lit.fmi.fi/stac/`
+`$ python stac_builder.py "dataset_config_file_location" "s3_config_file_location"`
 
-If the s3cmd config file is not at $HOME/.s3cfg, you can specify the path to the file via the parameter `--s3cfg`.
 
-### Creating the catalog
+For example:
 
-`python3 stac-item2index.py`
 
-## Interesting things
+`$ python stac_builder.py configuration_files/conf_Korjuukelpoisuus.json configuration_files/s3-config.json`
 
-There is a project for OL + COG that could provide an interesting viewer int he future: https://github.com/cholmes/cog-map
+## Run S3 connection test
+You can check if your S3 connection works by running **s3_connection_test.py**.
+
+
+Run the script by giving it as input the location of the dataset's configuration file and the location of S3 configuration file, writing 
+
+
+`$ python s3_connection_test.py "dataset_config_file_location" "s3_config_file_location"`
+
+
+For example:
+
+
+`$ python s3_connection_test.py configuration_files/conf_Korjuukelpoisuus.json configuration_files/s3-config.json`
+
+
+## Configuration files
+
+### S3 config
+
+S3 connection information is passed to stac_builder in a separate configuration file. The file is JSON
+
+| Field                 | Description                                                           |
+|-----------------------|-----------------------------------------------------------------------|
+| aws_access_key_id     | S3 access key (generated by AWS/CEPH or other S3 compatible platform) |
+| aws_secret_access_key | The secret part of the S3 access key                                  |
+| endpoint_url          | S3 endpoint URL to use when connecting to S3                          |
+
+
+### Dataset configuration
+
+| Field                        | Datatype                  | Description                                                                                                                                                                                  |
+|------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| datasetId                    | string                    | Unique identifier for the dataset. Preferably short, readable and without special characters or whitespace                                                                                   |
+| source.s3Bucket              | string                    | Name of the S3 bucket where assets are stored                                                                                                                                                |
+| source.s3Prefixes            | [string]                  | A list of S3 prefixes where assets are stored                                                                                                                                                |
+| source.publicUrlPrefix       | string                    | Public URL endpoint where assets are accessible via HTTP(s). Used for asset links                                                                                                            |
+| source.gdalUrlPrefix         | string (optional)         | Optional URL prefix used to access the assets during the cataloguing process. Useful when for example networking conditions prohibit using the public facing URL on a server.                |
+| destination.localItemPath    | string                    | Local filesystem path where STAC items are written and read from                                                                                                                             |
+| destination.localCatalogPath | string                    | Local filesystem path where STAC catalogues are written and read from                                                                                                                        |
+| destination.catalogBaseUrl   | string                    | Public URL prefix where catalog files will be accessible from. Used to produce links between STAC documents.                                                                                 |
+| destination.itemBaseUrl      | string                    | Public URL prefix where item files will be accessible from. Used to produce links between STAC documents.                                                                                    |
+| blacklist                    | [string]                  | List of assets that should not be processed when producing this STAC catalog. URLs formatted: publicUrlPrefix + S3 key                                                                       |
+| dataset.template             | object                    | STAC catalogue template that is used to produce the JSON files for dataset catalogues                                                                                                        |
+| dataset-time.template        | object                    | STAC catalogue template that is used to produce the JSON files for dataset-time catalogues                                                                                                   |
+| dataset-time.timeFrame       | "week", "month" or "year" | Whether dataset-time catalogues are produced for every week, month or year                                                                                                                   |
+| item.fileNamingConvention    | string (python regex)     | Regex rule that is used to 1) determine which assets should be read into the catalogue, 2) determine information about that asset. More about this below under "Item file naming convention" |
+| item.idTemplate              | string                    | String template for producing unique identifiers for assets. More about this below under "Item ID template"                                                                                  |
+| item.roles                   | "data" or .. ?            | The value for the "role" attribute in asset links in STAC items                                                                                                                              |
+| item.template                | object                    | STAC item template that is used to produce the JSON files                                                                                                                                    |
+| item.metadata                | object (optional)         | Optional object for item metadata extraction from .dim files. More about this below under "Item metadata extraction"                                                                         |
+| item.mosaicDuration          | object (optional)         | Optional object that supplies expected minimum and maximum durations for items that should belong in this dataset. More about this under "Item mosaic duration"                              |
+
+## Item file naming convention
+
+File naming convention is supplied as a [regex pattern](https://docs.python.org/3/howto/regex.html) that should match the names of asset files (not including paths). This pattern contains named groups that are used to derive information about the assets.
+
+| group name | meaning                                                                 |
+|------------|-------------------------------------------------------------------------|
+| startdate  | the starting date of the time the asset covers                          |
+| starttime  | the wall clock time (hours, minutes) of the asset start time (optional) |
+| enddate    | the end date of the time the asset covers (optional)                    |
+| starttime  | the wall clock time (hours, minutes) of the asset end time (optional)   |
+| band       | which band this asset contains                                          |
+| tile       | id of tile (optional, only makes sense for tiled datasets)              |
+
+## Item ID template
+
+The `item.idTemplate` string is used to produce unique identifiers for items. The string value may contain special words that will be replaced by data derived from the item file. The following special values are supported:
+
+| word      | meaning                                                               |
+|-----------|-----------------------------------------------------------------------|
+| startdate | The start date of the item                                            |
+| enddate   | The end date (if specified) of the item                               |
+| tile_id   | The tile ID derived from the item (for example military grid tile id) |
+
+## Item metadata extraction
+
+If extra metadata is needed in the STAC item files, stac_builder can read this from any XML formatted source (e.g., *.dim* and *.tif.aux.xml* files). The confiuration contains a file naming convention like with item assets and a number of extraction rules. The extraction rules in field `soupExtraction` are in the [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) syntax and results are written written in the STAC item in the JSON path set in `writeToItemField`. The metadata file is also stored as an asset in the STAC item with the role `metadata`.
+
+The extractionRules may contain a third field `rule`. If this field is set to `.get_text()`, the text contents of the `soupExtraction` match is stored, otherwise the structure of the document within match is stored.
+
+If the value of `writeToItemField` is `metadata_field`, extracted metadata is written in the metadata asset (within a field called `metadata`).
+
+Caveat: note that the metadata needs to be located in a S3 prefix (or prefixes) that are listed last in `source.s3Prefixes`. Otherwise metadata injection will be delayed. If the metadata files are processed before geotiff assets, the metadata will be injected on the next time the catalogue is processed.
+
+```
+  "metadata": {
+    "fileNamingConventionMeta": "^S1_processed_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<starttime>[0-9]{6})_(?P<endtime>[0-9]{6})_(?P<ratakierto>.{13}).dim$",
+    "extractionRules": [{
+      "writeToItemField": "properties.orbit",
+      "soupExtraction": "Dimap_Document > Dataset_Sources > MDElem[name='metadata'] > MDElem[name='Abstracted_Metadata'] > MDATTR[name='PASS']"
+    }]
+  }
+
+```
+
+## Item mosaic duration
+
+Optional object that supplies expected minimum and maximum durations for items that should belong in this dataset. Useful when the same S3 location contains a mix of mosaic assets following the same file naming convention, but these need to be split into different catalogues based on the asset mosaic duration. Durations are given as [ISO duration format](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm).
+
+Example of a rule matching items with a duration ranging from 5 to 10 days:
+
+```
+  "mosaicDuration": {
+      "min": "P5D",
+      "max": "P10D"
+  }
+```
+
+# Internal structure
+
+The main entry point to the tool is in `stac_builder.py`. This reads the dataset and S3 configuration files and invokes item_builder and then catalog_builder.
+
+The item_builder iterates through all S3 prefixes and lists all files within those prefixes producing items for the files. If it finds a file for which no item exists, it uses the template within the configuration to create a new file. If it finds a file for which there is no band in the existing STAC item, it updates the band information. If the configuration has metadata information and the process finds a metadata file, it reads the metadata and inejcts it into the STAC item.
+
+The catalog_builder reads all item files and produces a two stage catalogue where dataset-time catalogues are created based on the configured time frame(`dataset-time.timeFrame`). These dataset-time catalogues will contain links to items that intersect with that period. The dataset catalogue links to each dataset-time catalogue and includes information about which times each dataset-time catalog spans.
+
 

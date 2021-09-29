@@ -1,0 +1,81 @@
+{
+    "datasetId": "Latvuskorkeusmalli",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["smk/chm"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Latvuskorkeusmalli/",
+      "localCatalogPath": "catalog/Latvuskorkeusmalli/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/latvuskorkeusmalli/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/latvuskorkeusmalli/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Latvuskorkeusmalli",
+        "title": "Latvuskorkeusmalli",
+        "description": "SMK Latvuskorkeusmalli",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+              "name": "latvuskorkeus",
+              "min": 0,
+              "max": 250
+              }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosittain jaettu katalogitaso SMK Latvuskorkeusmalli -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^FI_FCH_SMK-model_(?P<startdate>[1-2][0-9]{3}).tif$",
+      "idTemplate": "Latvuskorkeusmalli_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "bandname": "latvuskorkeusmalli",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

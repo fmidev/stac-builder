@@ -1,0 +1,105 @@
+{
+    "datasetId": "Sentinel-2_indeksimosaiikit",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["sen2/s2m_meta", "sen2/s2m_ndvi", "sen2/s2m_ndti", "sen2/s2m_ndsi", "sen2/s2m_ndmi", "sen2/s2m_ndbi"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-2_indeksimosaiikit/",
+      "localCatalogPath": "catalog/Sentinel-2_indeksimosaiikit/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-2_indeksimosaiikit/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-2_indeksimosaiikit/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-2_indeksimosaiikit",
+        "title": "Sentinel-2 indeksimosaiikit",
+        "description": "Sentinel-2 Indeksimosaiikit kuukausittain huhti-lokakuulta (ndvi,ndbi,ndmi,ndsi,ndti)",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "meta",
+                  "min": 182,
+                  "max": 212
+              },
+              {
+                  "band": "ndvi",
+                  "min": 1,
+                  "max": 209
+              },
+              {
+                  "band": "ndti",
+                  "min": 1,
+                  "max": 212
+              },
+              {
+                  "band": "ndsi",
+                  "min": 1,
+                  "max": 215
+              },
+              {
+                  "band": "ndmi",
+                  "min": 1,
+                  "max": 214
+              },
+              {
+                  "band": "ndbi",
+                  "min": 1,
+                  "max": 255
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausiin jaettu katalogitaso Sentinel-2 Indeksimosaiikit kuukausittain -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "pta_sjp_s2ind_(?P<band>.*)_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<enddate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9]).tif$",
+      "idTemplate": "Sentinel-2_indeksimosaiikki_startdate_enddate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

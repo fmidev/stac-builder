@@ -1,0 +1,81 @@
+{
+    "datasetId": "Myrskytuhoriskikartta",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["luke/"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Myrskytuhoriskikartta/",
+      "localCatalogPath": "catalog/Myrskytuhoriskikartta/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/myrskytuhoriskikartta/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/myrskytuhoriskikartta/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Myrskytuhoriskikartta",
+        "title": "Myrskytuhoriskikartta",
+        "description": "LUKE Myrskytuhoriskikartta",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "myrskytuhoriski",
+                  "min": 0,
+                  "max": 0.2
+              }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosittain jaettu katalogitaso LUKE Myrskytuhoriskikartta -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^fwds_(?P<startdate>[1-2][0-9]{3}).tif$",
+      "idTemplate": "Myrskytuhoriskikartta_startdate",
+      "mosaicDuration": "",
+      "bandname": "myrskytuhoriski",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

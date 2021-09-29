@@ -1,0 +1,105 @@
+{
+    "datasetId": "Landsat_indeksit",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["lans/hind/NDBI", "lans/hind/NDMI", "lans/hind/NDSI", "lans/hind/NDTI", "lans/hind/NDVI", "lans/hind/META"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Landsat_indeksit/",
+      "localCatalogPath": "catalog/Landsat_indeksit/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/landsat_indeksit/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/landsat_indeksit/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Landsat_indeksit",
+        "title": "Landsat indeksit",
+        "description": "Landsat indeksit vuosille 1984-2011",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "ndbi",
+                  "min": 1,
+                  "max": 200
+              },
+              {
+                  "band": "ndmi",
+                  "min": 1,
+                  "max": 200
+              },
+              {
+                  "band": "ndsi",
+                  "min": 1,
+                  "max": 200
+              },
+              {
+                  "band": "ndti",
+                  "min": 1,
+                  "max": 200
+              },
+              {
+                  "band": "ndvi",
+                  "min": 1,
+                  "max": 200
+              },
+              {
+                  "band": "meta",
+                  "min": 101,
+                  "max": 255
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosittain jaettu katalogitaso Landsat indeksit -tuotteille vuosille 1984-2011",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "pta_sjp_hind_(?P<band>.*)_(?P<startdate>[1-2][0-9]{3}).tif$",
+      "idTemplate": "Landsat_indeksit_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

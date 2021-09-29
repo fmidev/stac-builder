@@ -1,0 +1,100 @@
+{
+    "datasetId": "Maastomalli",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["dem/etrs-tm35fin-n2000", "dem/etrs-tm35fin-n2000/aspect", "dem/etrs-tm35fin-n2000/slope"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Maastomalli/",
+      "localCatalogPath": "catalog/Maastomalli/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/maastomalli/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/maastomalli/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Maastomalli",
+        "title": "Maastomalli",
+        "description": "MML 2m maastokorkeus",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+                {
+                    "band": "height",
+                    "min": -100,
+                    "max": 1324
+                },
+                {
+                    "band": "aspect",
+                    "min": 0,
+                    "max": 6.283185307
+                },
+                {
+                    "band": "slope",
+                    "min": 0,
+                    "max": 6.283185307
+                }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosiin jaettu katalogitaso MML 2m maastokorkeus -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^MML-DTM-(?P<startdate>[1-2][0-9]{3})-2m-(?P<tile>.{2})(-|.?)(?P<band>aspect|slope|height|.?).tif$",
+      "idTemplate": "Maastomalli_startdate_tile_id",
+      "mosaicDuration": "",
+      "roles": "data",
+      "missingbandname": "dtm",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    },
+    "metadata": {
+      "fileNamingConventionMeta": "^MML-DTM-(?P<startdate>[1-2][0-9]{3})-2m-(?P<tile>.{2})(-|.?)(?P<band>aspect|slope|height|.?).tif",
+      "extractionRules":[
+        {
+          "writeToItemField": "metadata_field",
+          "soupExtraction": "Metadata",
+          "rule": null
+        }
+      ]
+    }
+  }
+}

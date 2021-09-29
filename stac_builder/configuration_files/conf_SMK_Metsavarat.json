@@ -1,0 +1,152 @@
+{
+    "datasetId": "Metsavarat",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["smk/alaryhma", "smk/kasvupaikkaluokka", "smk/kehitysluokka", "smk/keski_ika", 
+        "smk/keskilapimitta", "smk/keskipituus", "smk/kuusi_ppa", "smk/kuusi_tilavuus", "smk/lehtip_ppa",
+        "smk/lehtip_tilavuus", "smk/manty_ppa", "smk/manty_tilavuus", "smk/maalaji", "smk/paaryhma", "smk/runkoluku"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Metsavarat/",
+      "localCatalogPath": "catalog/Metsavarat/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/metsavarat/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/metsavarat/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Metsavarat",
+        "title": "SMK Metsävarat",
+        "description": "SMK Metsävara hilatieto",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "alaryhma",
+                  "min": 0,
+                  "max": 10
+              },
+              {
+                "band": "kasvupaikkaluokka",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "kehitysluokka",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "keski_ika",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "keskilapimitta",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "keskipituus",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "kuusi_ppa",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "kuusi_tilavuus",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "lehtip_ppa",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "lehtip_tilavuus",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "manty_ppa",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "manty_tilavuus",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "maalaji",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "paaryhma",
+                "min": 0,
+                "max": 10
+            },
+            {
+                "band": "runkoluku",
+                "min": 0,
+                "max": 10
+            }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausittain jaettu katalogitaso SMK Metsävara hilatieto -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^.*_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<band>.*).tif$",
+      "idTemplate": "SMK_Metsavarat_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

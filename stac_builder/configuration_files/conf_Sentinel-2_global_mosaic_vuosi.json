@@ -1,0 +1,188 @@
+{
+    "datasetId": "Sentinel-2_global_mosaic_vuosi",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["sen2/s2m_b01", "sen2/s2m_b02", "sen2/s2m_b03", "sen2/s2m_b04", "sen2/s2m_b05", "sen2/s2m_b06", "sen2/s2m_b07", "sen2/s2m_b08", "sen2/s2m_b8a", "sen2/s2m_b11", "sen2/s2m_b12", "sen2/s2m_view_azimuth_mean", "sen2/s2m_sun_azimuth", "sen2/s2m_view_zenith_mean", "sen2/s2m_sun_zenith", "sen2/s2m_medoid_mos", "sen2/s2m_source_index", "sen2/s2m_quality_aot", "sen2/s2m_valid_obs", "sen2/s2m_quality_scene_classification", "sen2/s2m_quality_snow_confidence", "sen2/s2m_quality_cloud_confidence"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-2_global_mosaic_vuosi/",
+      "localCatalogPath": "catalog/Sentinel-2_global_mosaic_vuosi/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-2_global_mosaic_vuosi/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-2_global_mosaic_vuosi/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-2_global_mosaic_vuosi",
+        "title": "Sentinel-2 Global mosaic (vuosi)",
+        "description": "Sentinel-2 Global mosaic kanavittain pintaheijastussuhde vuosimosaiikki",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosiin jaettu katalogitaso Sentinel-2 Global mosaic kanavittain pintaheijastussuhde vuosimosaiikki -aineistolle",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "b01",
+                  "min": 1200,
+                  "max": 2800
+              },
+              {
+                "band": "b02",
+                "min": 0,
+                "max": 2000
+              },
+              {
+                  "band": "b03",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "b04",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "b05",
+                  "min": 400,
+                  "max": 3300
+              },
+              {
+                  "band": "b06",
+                  "min": 300,
+                  "max": 4000
+              },
+              {
+                  "band": "b07",
+                  "min": 300,
+                  "max": 4600
+              },
+              {
+                  "band": "b08",
+                  "min": 300,
+                  "max": 4300
+              },
+              {
+                  "band": "b8a",
+                  "min": 300,
+                  "max": 5000
+              },
+              {
+                  "band": "b11",
+                  "min": 100,
+                  "max": 4000
+              },
+              {
+                  "band": "b12",
+                  "min": 50,
+                  "max": 3500
+              },
+              {
+                  "band": "view_azimuth_mean",
+                  "min": 2300,
+                  "max": 32767
+              },
+              {
+                  "band": "sun_azimuth",
+                  "min": 16000,
+                  "max": 19012
+              },
+              {
+                  "band": "view_zenith_mean",
+                  "min": 95,
+                  "max": 1194
+              },
+              {
+                  "band": "sun_zenith",
+                  "min": 3580,
+                  "max": 8532
+              },
+              {
+                  "band": "medoid_mos",
+                  "min": 97,
+                  "max": 16698
+              },
+              {
+                  "band": "source_index",
+                  "min": 0,
+                  "max": 2407
+              },
+              {
+                  "band": "quality_aot",
+                  "min": 0,
+                  "max": 2000
+              },
+              {
+                  "band": "valid_obs",
+                  "min": 0,
+                  "max": 200
+              },
+              {
+                  "band": "quality_scene_classification",
+                  "min": 0,
+                  "max": 11
+              },
+              {
+                  "band": "quality_snow_confidence",
+                  "min": 0,
+                  "max": 100
+              },
+              {
+                  "band": "quality_cloud_confidence",
+                  "min": 0,
+                  "max": 100
+              }
+          ]
+          }
+        }
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^s2m_sdr_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])-(?P<enddate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<band>.*)_r[1-2]0m.tif$",
+      "idTemplate": "Sentinel-2_global_mosaic_vuosi_startdate_enddate",
+      "mosaicDuration": {
+        "min" : "P363D",
+        "max": "P366D"
+      },
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

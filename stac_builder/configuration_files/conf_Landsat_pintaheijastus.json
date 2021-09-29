@@ -1,0 +1,105 @@
+{
+    "datasetId": "Landsat_pintaheijastus",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["lans/lsm_sr_b1", "lans/lsm_sr_b2", "lans/lsm_sr_b3", "lans/lsm_sr_b4", "lans/lsm_sr_b5", "lans/lsm_sr_b7"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Landsat_pintaheijastus/",
+      "localCatalogPath": "catalog/Landsat_pintaheijastus/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/landsat_pintaheijastus_vuosikuvat/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/landsat_pintaheijastus_vuosikuvat/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Landsat_pintaheijastus",
+        "title": "Landsat pintaheijastus vuosikuvat",
+        "description": "Landsat pintaheijastus vuosikuvat 1985, 1990 ja 1995 vuosille",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "sr_b1",
+                  "min": -814,
+                  "max": 3987
+              },
+              {
+                  "band": "sr_b2",
+                  "min": -307,
+                  "max": 9270
+              },
+              {
+                  "band": "sr_b3",
+                  "min": -197,
+                  "max": 8831
+              },
+              {
+                  "band": "sr_b4",
+                  "min": -227,
+                  "max": 10660
+              },
+              {
+                  "band": "sr_b5",
+                  "min": -11,
+                  "max": 7343
+              },
+              {
+                  "band": "sr_b7",
+                  "min": 16,
+                  "max": 10483
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Vuosittain jaettu katalogitaso Landsat pintaheijastus vuosikuvat -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^lsm_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<band>.*).tif$",
+      "idTemplate": "Landsat_pintaheijastus_vuosikuvat_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

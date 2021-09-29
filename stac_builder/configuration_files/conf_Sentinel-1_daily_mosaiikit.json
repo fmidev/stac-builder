@@ -1,0 +1,120 @@
+{
+    "datasetId": "Sentinel-1_daily_mosaiikki",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["daily/s1m_grd_vv_min", "daily/s1m_grd_vv_mean", "daily/s1m_grd_vv_max", "daily/s1m_grd_vv_std", "daily/s1m_grd_vvvh_mean", "daily/s1m_grd_vh_min", "daily/s1m_grd_vh_mean", "daily/s1m_grd_vh_max", "daily/s1m_grd_vh_std"],      
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-1_daily_mosaiikki/",
+      "localCatalogPath": "catalog/Sentinel-1_daily_mosaiikki/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_daily_mosaiikki/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_daily_mosaiikki/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-1_daily_mosaiikki",
+        "title": "Sentinel-1 päivittäiset mosaiikit", 
+        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille paivittaiset mosaiikit.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "min_vv",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "mean_vv",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "max_vv",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "stdev_vv",
+                  "min": -5,
+                  "max": 5
+              },
+              {
+                  "band": "mean_vvvh",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "min_vh",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "mean_vh",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "max_vh",
+                  "min": -40,
+                  "max": 5
+              },
+              {
+                  "band": "stdev_vh",
+                  "min": -40,
+                  "max": 5
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "week",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Viikkoihin jaettu katalogitaso Sentinel-1 takaisinsironta VV ja VH polarisaatioille paivittaiset mosaiikit -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^s1m_grd_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<band>.*)_R[1-2]0m.tif$",
+      "idTemplate": "Sentinel-1_VV_ja_VH_daily_mosaiikki_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+    "datasetId": "Sentinel-1_osakuvat",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["sen1/s1_grd_vv_prep", "sen1/s1_grd_vh_prep", "sen1/s1_grd_meta_prep"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-1_osakuvat/",
+      "localCatalogPath": "catalog/Sentinel-1_osakuvat/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_osakuvat/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_osakuvat/"
+    },
+    "blacklist": ["https://pta.data.lit.fmi.fi/sen1/s1_grd_vv_prep/S1_processed_20161213_161937_161956_003380_005C53_VV.tif", "https://pta.data.lit.fmi.fi/sen1/s1_grd_vv_prep/S1_processed_20190801_152415_152440_017394_020B5A_VV.tif"],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-1_osakuvat",
+        "title": "Sentinel-1 osakuvat",
+        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "vv",
+                  "min": -40,
+                  "max": 5,
+                  "NoData": 0
+              },
+              {
+                  "band": "vh",
+                  "min": -40,
+                  "max": 5,
+                  "NoData": 0
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausiin jaettu katalogitaso Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat -aineistolle",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^S1_processed_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<starttime>[0-9]{6})_(?P<endtime>[0-9]{6})_.{13}_(?P<band>.*).tif$",
+      "idTemplate": "Sentinel-1_VV_ja_VH_osakuvat_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+      ]
+      },
+      "metadata": {
+        "fileNamingConventionMeta": "^S1_processed_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<starttime>[0-9]{6})_(?P<endtime>[0-9]{6})_.{13}.dim$",
+        "extractionRules":[
+          {
+            "writeToItemField": "properties.orbit",
+            "soupExtraction": "Dimap_Document > Dataset_Sources > MDElem[name='metadata'] > MDElem[name='Abstracted_Metadata'] > MDATTR[name='PASS']",
+            "rule": ".get_text()"
+          }
+        ]
+      }
+  }
+}
