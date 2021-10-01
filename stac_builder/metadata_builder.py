@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 import helpers as h
 
-def metadata_builder(conf, filename, url):
+def metadata_builder(conf, filename, url, url_gdal):
     '''
     Function adds information about metadata to existing items. 
     Function fetches information of the orbit (ascending/descending) from .dim -file.
@@ -105,7 +105,7 @@ def metadata_builder(conf, filename, url):
         if meta_band not in assets:
             
             # Fetch orbit information
-            r = requests.get(url)
+            r = requests.get(url_gdal)
             data = r.text
             soup = BeautifulSoup(data, "lxml")
             soupExtractionrules = conf["item"]["metadata"]["extractionRules"]

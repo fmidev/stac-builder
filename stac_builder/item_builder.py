@@ -51,9 +51,14 @@ def item_builder(conf, s3client):
                 filename = url.split("/")[-1] 
                 print("Processing", filename)
 
+                if "gdalUrlPrefix" in conf["source"]:
+                    url_gdal = conf["source"]["gdalUrlPrefix"] + file['Key']
+                else:
+                    url_gdal = publicUrlPrefix + file['Key']
+
                 # Metadata processing
                 if "metadata" in conf["item"]: # add Sentinel-1 metadata
-                    metadata_builder.metadata_builder(conf, filename, url)
+                    metadata_builder.metadata_builder(conf, filename, url, url_gdal)
                     continue
                                         
                 # Find date and band from filename using fileNameConvention
