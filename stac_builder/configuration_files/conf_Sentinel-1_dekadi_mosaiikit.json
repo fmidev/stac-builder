@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Sentinel-1_dekadi_mosaiikki/",
       "localCatalogPath": "catalog/Sentinel-1_dekadi_mosaiikki/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_dekadi_mosaiikki/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_dekadi_mosaiikki/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_dekadi_mosaiikki/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-1_dekadi_mosaiikki/"
     },
     "blacklist": ["https://pta.data.lit.fmi.fi/sen1/s1m_grd_vh_min/s1m_grd_20210311-20210321_min_VH_R20m.tif", 
       "https://pta.data.lit.fmi.fi/sen1/s1m_grd_vh_std/s1m_grd_20150101-20150111_stdev_VH_R20m.tif", 

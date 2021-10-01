@@ -126,8 +126,8 @@
     "destination": {
       "localItemPath": "items/Sentinel-2_global_tile_dekadi/",
       "localCatalogPath": "catalog/Sentinel-2_global_tile_dekadi/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-2_global_tile_dekadi",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-2_global_tile_dekadi/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_tile_dekadi",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-2_global_tile_dekadi/"
     },
     "blacklist": [],
     "dataset": {

@@ -8,8 +8,8 @@
     "destination": {
       "localItemPath": "items/Maastomalli/",
       "localCatalogPath": "catalog/Maastomalli/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/maastomalli/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/maastomalli/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Maastomalli/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/itema/Maastomalli/"
     },
     "blacklist": [],
     "dataset": {

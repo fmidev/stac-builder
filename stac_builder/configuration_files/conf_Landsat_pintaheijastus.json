@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Landsat_pintaheijastus/",
       "localCatalogPath": "catalog/Landsat_pintaheijastus/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/landsat_pintaheijastus_vuosikuvat/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/landsat_pintaheijastus_vuosikuvat/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Landsat_pintaheijastus_vuosikuvat/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Landsat_pintaheijastus_vuosikuvat/"
     },
     "blacklist": [],
     "dataset": {

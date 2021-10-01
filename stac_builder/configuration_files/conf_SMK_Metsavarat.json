@@ -11,8 +11,8 @@
     "destination": {
       "localItemPath": "items/Metsavarat/",
       "localCatalogPath": "catalog/Metsavarat/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/metsavarat/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/metsavarat/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Metsavarat/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Metsavarat/"
     },
     "blacklist": [],
     "dataset": {

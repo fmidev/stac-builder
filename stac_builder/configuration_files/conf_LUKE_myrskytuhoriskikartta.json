@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Myrskytuhoriskikartta/",
       "localCatalogPath": "catalog/Myrskytuhoriskikartta/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/myrskytuhoriskikartta/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/myrskytuhoriskikartta/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Myrskytuhoriskikartta/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Myrskytuhoriskikartta/"
     },
     "blacklist": [],
     "dataset": {

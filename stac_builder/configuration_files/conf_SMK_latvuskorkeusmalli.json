@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Latvuskorkeusmalli/",
       "localCatalogPath": "catalog/Latvuskorkeusmalli/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/latvuskorkeusmalli/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/latvuskorkeusmalli/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Latvuskorkeusmalli/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Latvuskorkeusmalli/"
     },
     "blacklist": [],
     "dataset": {

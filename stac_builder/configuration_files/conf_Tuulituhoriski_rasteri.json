@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Tuulituhoriski/",
       "localCatalogPath": "catalog/Tuulituhoriski/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/tuulituhoriski/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/tuulituhoriski/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Tuulituhoriski/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Tuulituhoriski/"
     },
     "blacklist": [],
     "dataset": {

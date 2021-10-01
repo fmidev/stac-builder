@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Sentinel-1_osakuvat/",
       "localCatalogPath": "catalog/Sentinel-1_osakuvat/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_osakuvat/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_osakuvat/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_osakuvat/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-1_osakuvat/"
     },
     "blacklist": ["https://pta.data.lit.fmi.fi/sen1/s1_grd_vv_prep/S1_processed_20161213_161937_161956_003380_005C53_VV.tif", "https://pta.data.lit.fmi.fi/sen1/s1_grd_vv_prep/S1_processed_20190801_152415_152440_017394_020B5A_VV.tif"],
     "dataset": {

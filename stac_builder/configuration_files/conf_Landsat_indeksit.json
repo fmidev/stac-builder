@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Landsat_indeksit/",
       "localCatalogPath": "catalog/Landsat_indeksit/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/landsat_indeksit/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/landsat_indeksit/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Landsat_indeksit/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Landsat_indeksit/"
     },
     "blacklist": [],
     "dataset": {

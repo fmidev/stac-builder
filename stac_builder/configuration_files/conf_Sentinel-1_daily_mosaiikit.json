@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Sentinel-1_daily_mosaiikki/",
       "localCatalogPath": "catalog/Sentinel-1_daily_mosaiikki/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_daily_mosaiikki/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_daily_mosaiikki/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_daily_mosaiikki/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-1_daily_mosaiikki/"
     },
     "blacklist": [],
     "dataset": {

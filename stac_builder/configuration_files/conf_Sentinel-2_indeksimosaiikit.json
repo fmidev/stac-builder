@@ -9,8 +9,8 @@
     "destination": {
       "localItemPath": "items/Sentinel-2_indeksimosaiikit/",
       "localCatalogPath": "catalog/Sentinel-2_indeksimosaiikit/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-2_indeksimosaiikit/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-2_indeksimosaiikit/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_indeksimosaiikit/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-2_indeksimosaiikit/"
     },
     "blacklist": [],
     "dataset": {

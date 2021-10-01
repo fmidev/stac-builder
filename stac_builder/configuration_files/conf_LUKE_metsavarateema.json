@@ -19,8 +19,8 @@
     "destination": {
       "localItemPath": "items/Metsavarateema/",
       "localCatalogPath": "catalog/Metsavarateema/",
-      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/metsavarateema/",
-      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/item/metsavarateema/"
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Metsavarateema/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Metsavarateema/"
     },
     "blacklist": [],
     "dataset": {
