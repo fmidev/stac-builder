@@ -36,11 +36,12 @@ def item_builder(conf, s3client):
         while True:
             try:
                 response = s3client.list_objects_v2(Bucket=s3Bucket, Prefix=s3Prefix, ContinuationToken=nextToken)
+                contents = response['Contents']
             except:
                 print("An error occurred with prefix", s3Prefix)
                 break
 
-            for file in response['Contents']:
+            for file in contents:
                 url = publicUrlPrefix + file['Key']
                 
                 # Check if url is in blacklist
