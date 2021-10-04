@@ -154,3 +154,4 @@ def metadata_builder(conf, filename, url, url_gdal):
                 # Write item json files into destination.localItemPath
                 with open(local_item_path, 'w') as outfile:
                     json.dump(new_item, outfile)
+                    print("Writing", local_item_path)

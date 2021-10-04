@@ -60,7 +60,6 @@ def item_builder(conf, s3client):
                 # Metadata processing
                 if "metadata" in conf["item"]: # add Sentinel-1 metadata
                     metadata_builder.metadata_builder(conf, filename, url, url_gdal)
-                    continue
                                         
                 # Find date and band from filename using fileNameConvention
                 # and regular expressions (regex: https://docs.python.org/3/howto/regex.html)
@@ -94,7 +93,7 @@ def item_builder(conf, s3client):
                         tile = None
                         
                 except AttributeError: # if filename does not match expected format
-                    print(filename, "does not match file naming convention")
+                    #print(filename, "does not match file naming convention")
                     continue
 
                 # Create id using item.idTemplate
@@ -310,6 +309,7 @@ def item_builder(conf, s3client):
                     filename = destinationPath + merged["id"] + ".json"
                     with open(filename, 'w') as outfile: 
                         json.dump(merged, outfile)
+                        print("Writing", filename)
 
             if 'NextContinuationToken' in response:
                 nextToken = response['NextContinuationToken']
