@@ -168,7 +168,7 @@
       "idTemplate": "Sentinel-2_global_mosaic_dekadi_startdate_enddate",
       "mosaicDuration": {
         "min" : "P5D",
-        "max": "P10D"
+        "max": "P12D"
       },
       "roles": "data",
       "template": {
