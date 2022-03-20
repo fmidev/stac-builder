@@ -1,25 +1,25 @@
 {
-    "datasetId": "Tuulituhoriski",
+    "datasetId": "Sentinel-1_tuuli",
     "source": { 
       "s3Bucket": "pta",
-      "s3Prefixes": ["met/wgfd"],
+      "s3Prefixes": ["sen1/s1_ocn_ws", "sen1/s1_ocn_wdir"],
       "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
       "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
     },
     "destination": {
-      "localItemPath": "items/Tuulituhoriski/",
-      "localCatalogPath": "catalog/Tuulituhoriski/",
-      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Tuulituhoriski/",
-      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Tuulituhoriski/"
+      "localItemPath": "items/Sentinel-1_tuuli/",
+      "localCatalogPath": "catalog/Sentinel-1_tuuli/",
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_tuuli/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-1_tuuli/"
     },
     "blacklist": [],
     "dataset": {
       "template": {
         "type": "Collection",
         "stac_version": "1.0.0",
-        "id": "Tuulituhoriski",
-        "title": "Tuulituhoriski",
-        "description": "Tuulituhoriski rasterina",
+        "id": "Sentinel-1_tuuli",
+        "title": "Sentinel-1 tuuli",
+        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille tuuli",
         "license": "proprietary",
         "links": [
          {
@@ -32,22 +32,29 @@
           "visualisation_parameters": {
             "bands": [
               {
-              "name": "tuulituhoriski",
-              "min": 15,
-              "max": 40
+                  "band": "ws",
+                  "min": 0,
+                  "max": 40,
+                  "NoData": -999
+              },
+              {
+                  "band": "wdir",
+                  "min": 0,
+                  "max": 360,
+                  "NoData": -999
               }
-            ]
+          ]
           }
         }
       }
     },
     "dataset-time": {
-      "timeFrame" : "week",
+      "timeFrame" : "month",
       "template": {
         "type": "Collection",
         "stac_version": "1.0.0",
         "id": "",
-        "description": "Viikoittain jaettu katalogitaso Tuulituhoriski rasterina -aineistolle.",
+        "description": "Kuukausiin jaettu katalogitaso Sentinel-1 takaisinsironta VV/VH ja HH/HV polarisaatioiden tuuli -aineistolle",
         "license": "proprietary",
         "links": [
          {
@@ -59,11 +66,10 @@
       }
     },
     "item": {
-      "fileNamingConvention": "^Tuuli_(?P<startdate>[1-2][0-9]{3}-[0-1][0-9]-[0-3][0-9])_WG_KED.tif$",
-      "idTemplate": "Tuulituhoriski_startdate",
+      "fileNamingConvention": "^s1*-(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])t(?P<starttime>[0-9]{6})-(?P<enddate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])t(?P<endtime>[0-9]{6})-.{17}-(?P<band>.*).tif$",
+      "idTemplate": "Sentinel-1_VV_ja_VH_tuuli_startdate_enddate",
       "mosaicDuration": "",
       "roles": "data",
-      "bandname": "tuulituhoriski",
       "template": {
         "stac_version": "1.0.0",
         "type": "Feature",
@@ -75,12 +81,7 @@
           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
           "title": "License"
         }
-        ],
-        "metadata": {
-          "fileNamingConventionMeta": "^Tuuli_(?P<startdate>[1-2][0-9]{3}-[0-1][0-9]-[0-3][0-9])_obs_wg.csv$",
-          "extractionRules":[
-          ]
-        }
-    }
+      ]
+      }
   }
 }
