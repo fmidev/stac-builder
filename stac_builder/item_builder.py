@@ -128,7 +128,7 @@ def item_builder(conf, s3client):
                         end_id = enddate[0:4] +'-'+ enddate[4:6] +'-'+ enddate[6:8]
                         id = id.replace("enddate", end_id)
                         if starttime: # with hours, minutes and seconds
-                            start = datetime(int(startdate[0:4]), int(startdate[4:6]), int(startdate[6:8], int(starttime[0:2]), int(starttime[2:4]), int(starttime[4:6])))
+                            start = datetime(int(startdate[0:4]), int(startdate[4:6]), int(startdate[6:8]), int(starttime[0:2]), int(starttime[2:4]), int(starttime[4:6]))
                             start_isoformat = start.isoformat(timespec='seconds') + 'Z'
                             end = datetime(int(enddate[0:4]), int(enddate[4:6]), int(enddate[6:8]), int(endtime[0:2]), int(endtime[2:4]), int(endtime[4:6]))
                             end_isoformat = end.isoformat(timespec='seconds') + 'Z'

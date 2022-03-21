@@ -19,7 +19,7 @@
         "stac_version": "1.0.0",
         "id": "Sentinel-1_tuuli",
         "title": "Sentinel-1 tuuli",
-        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille tuuli",
+        "description": "Sentinel-1 takaisinsironta VV/YH ja HH/HV polarisaatioille tuuli",
         "license": "proprietary",
         "links": [
          {
@@ -66,8 +66,8 @@
       }
     },
     "item": {
-      "fileNamingConvention": "^s1*-(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])t(?P<starttime>[0-9]{6})-(?P<enddate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])t(?P<endtime>[0-9]{6})-.{17}-(?P<band>.*).tif$",
-      "idTemplate": "Sentinel-1_VV_ja_VH_tuuli_startdate_enddate",
+      "fileNamingConvention": "^s1[ab]-[ei]w-ocn-[hv][hv]-(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])t(?P<starttime>[0-9]{6})-(?P<enddate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])t(?P<endtime>[0-9]{6})-.{17}-(?P<band>.*).tif$",
+      "idTemplate": "Sentinel-1_VV_ja_VH_tuuli_startdate",
       "mosaicDuration": "",
       "roles": "data",
       "template": {
