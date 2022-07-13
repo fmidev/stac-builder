@@ -96,7 +96,7 @@ def dataset_collection_builder(conf):
     
     # Update object values
     dataset_collection_object["extent"]["spatial"]["bbox"] = [bbox]
-    dataset_collection_object["extent"]["temporal"]["interval"] = [min_time.isoformat(timespec='seconds') + 'Z' , max_time.isoformat(timespec='seconds') + 'Z']
+    dataset_collection_object["extent"]["temporal"]["interval"] = [[min_time.isoformat(timespec='seconds') + 'Z' , max_time.isoformat(timespec='seconds') + 'Z']]
     dataset_collection_object["summaries"]["datetime"]["minimum"] = min_time.isoformat(timespec='seconds') + 'Z'
     dataset_collection_object["summaries"]["datetime"]["maximum"] = max_time.isoformat(timespec='seconds') + 'Z'
 
@@ -178,7 +178,7 @@ def dataset_time_collection_step1(conf, dataset_collection_object):
         dataset_time_collection_new["id"] = id
         dataset_time_collection_new["summaries"]["datetime"]["minimum"] = dt
         dataset_time_collection_new["summaries"]["datetime"]["maximum"] = end
-        dataset_time_collection_new["extent"]["temporal"]["interval"] = [dt, end]
+        dataset_time_collection_new["extent"]["temporal"]["interval"] = [[dt, end]]
         link = conf["destination"]["catalogBaseUrl"] + id + ".json"
         dataset_time_collection_new["links"].append({"rel": "self", "href": link})
 
@@ -262,7 +262,7 @@ def dataset_time_collection_step2(conf, dataset_time_collection_list, dataset_co
             # Update dataset-time collection's min and max time 
             dataset_time_collection["summaries"]["datetime"]["minimum"] = min_time.isoformat(timespec='seconds') + 'Z'
             dataset_time_collection["summaries"]["datetime"]["maximum"] = max_time.isoformat(timespec='seconds') + 'Z'
-            dataset_time_collection["extent"]["temporal"]["interval"] = [min_time.isoformat(timespec='seconds') + 'Z', max_time.isoformat(timespec='seconds') + 'Z']
+            dataset_time_collection["extent"]["temporal"]["interval"] = [[min_time.isoformat(timespec='seconds') + 'Z', max_time.isoformat(timespec='seconds') + 'Z']]
             
             # Add info of available bands
             for band in bands:
