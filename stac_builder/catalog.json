@@ -1,0 +1,68 @@
+{
+  "type": "Catalog",
+  "stac_version": "1.0.0",
+  "id": "root",
+  "description": "Tuulituhohaukka catalog root",
+  "links": [
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Tuulituhoriski/Tuulituhoriski.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/MML-DTM-2m/MML-DTM-2m.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Landsat_indeksit/Landsat_indeksit.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Landsat_pintaheijastus/Landsat_pintaheijastus.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Latvuskorkeusmalli/Latvuskorkeusmalli.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Metsavarateema/Metsavarateema.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Myrskytuhoriskikartta/Myrskytuhoriskikartta.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_daily_mosaiikki/Sentinel-1_daily_mosaiikki.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_dekadi_mosaiikki/Sentinel-1_dekadi_mosaiikki.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_osakuvat/Sentinel-1_osakuvat.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_mosaic_dekadi/Sentinel-2_global_mosaic_dekadi.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_mosaic_vuosi/Sentinel-2_global_mosaic_vuosi.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_tile_dekadi/Sentinel-2_global_tile_dekadi.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_tile_vuosi/Sentinel-2_global_tile_vuosi.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_indeksimosaiikit/Sentinel-2_indeksimosaiikit.json"
+    }
+  ]
+}
