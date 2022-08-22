@@ -10,7 +10,7 @@
     },
     {
       "rel": "child",
-      "href": "https://pta.data.lit.fmi.fi/stac/catalog/MML-DTM-2m/MML-DTM-2m.json"
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Maastomalli/Maastomalli.json"
     },
     {
       "rel": "child",
