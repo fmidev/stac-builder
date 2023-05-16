@@ -12,7 +12,8 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ".devcontainer/post_create.sh"
+	"postCreateCommand": ".devcontainer/post_create.sh",
+	"runArgs": ["--env-file",".devcontainer/devcontainer.env"]
 	
 	// Configure tool-specific properties.
 	// "customizations": {},
