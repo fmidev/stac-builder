@@ -1,0 +1,35 @@
+{
+    "datasetId": "Pan_EU_highres_layers",
+    "source": { 
+      "s3Bucket": "copernicus",
+      "s3Prefixes": ["land/eu_"],
+      "publicUrlPrefix": "https://copernicus.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://copernicus.data.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Pan_EU_highres_layers/",
+      "itemBaseUrl": "https://copernicus.data.lit.fmi.fi/stac/items/XXX/"
+    },
+    "blacklist": [],
+    "noCatalog": true,
+    "item": {
+      "fileNamingConvention": "land/eu_(?P<band>(forestcover|grasscover|imperviousness|water-wetness|wetness-probability))/(TCD|GRA|IMD|WAW|WWPI)_(?P<startdate>[0-9]+)_(?P<resolution>[0-9]+m)_eu_.*.tif$",
+      "fullPathNamingConvention": true,
+      "idTemplate": "PanEUHighres_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

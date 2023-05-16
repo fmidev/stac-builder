@@ -29,10 +29,6 @@ localItemPath = Path(conf["destination"]["localItemPath"])
 if localItemPath.exists() == False:
     localItemPath.mkdir(parents=True)
 
-# Create destinations for catalog if they do not exist yet
-localCatalogPath = Path(conf["destination"]["localCatalogPath"])
-if localCatalogPath.exists() == False: 
-    localCatalogPath.mkdir(parents=True)
 
 # Build STAC
 
@@ -41,7 +37,15 @@ print("************************* Item builder starts. *************************"
 item_builder.main(conf, conf_s3)
 
 # Create catalog
-print("************************* Catalog builder starts. *************************")
-catalog_builder.main(conf)
+if 'noCatalog' in conf:
+    print("************************* No catalog will be built as noCatalog is True *************************")    
+else:
+    print("************************* Catalog builder starts. *************************")
+    # Create destinations for catalog if they do not exist yet
+    localCatalogPath = Path(conf["destination"]["localCatalogPath"])
+    if localCatalogPath.exists() == False: 
+        localCatalogPath.mkdir(parents=True)
+
+    catalog_builder.main(conf)
 
 print("************************* STAC is ready! *************************")

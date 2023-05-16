@@ -50,7 +50,6 @@ def item_builder(conf, s3client):
 
                 # Extract filename from url
                 filename = url.split("/")[-1] 
-                print("Processing", filename)
 
                 if "gdalUrlPrefix" in conf["source"]:
                     url_gdal = conf["source"]["gdalUrlPrefix"] + file['Key']
@@ -64,8 +63,14 @@ def item_builder(conf, s3client):
                 # Find date and band from filename using fileNameConvention
                 # and regular expressions (regex: https://docs.python.org/3/howto/regex.html)
                 p = re.compile(fileNamingConvention)
-                m = p.search(filename)
+                if "fullPathNamingConvention" in conf["item"]:
+                    m = p.search(file['Key'])
+                else:
+                    m = p.search(filename)
                 
+                if m is None: continue
+                print("Processing", filename)
+
                 try: # Check if filename is in expected format
                     
                     startdate = m.group('startdate')
@@ -288,14 +293,15 @@ def item_builder(conf, s3client):
                             {
                             "rel": "self",
                             "href": self_link
-                            },
-                            {
-                            "rel": "collection",
-                            "href": conf["destination"]["catalogBaseUrl"] + conf["datasetId"] +".json"
                             }
                         ],
                         "assets": {}
                     }
+                    if 'noCatalog' not in conf:
+                        asset_object["links"].push({
+                            "rel": "collection",
+                            "href": conf["destination"]["catalogBaseUrl"] + conf["datasetId"] +".json"
+                        })
                     asset_object["assets"][band] = {
                         "href": url,
                         "title": band,
