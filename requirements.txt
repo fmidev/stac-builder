@@ -1,5 +1,6 @@
 urllib3==1.25.4
 boto3==1.17.102
+numpy==1.19.5
 GDAL==3.2.2
 shapely==1.7.1
 isodate==0.6.0
