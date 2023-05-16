@@ -2,3 +2,4 @@ stac_builder/__pycache__/
 stac_builder/configuration_files/s3-config.json
 stac_builder/items/
 stac_builder/catalog/
+.devcontainer/devcontainer.env
