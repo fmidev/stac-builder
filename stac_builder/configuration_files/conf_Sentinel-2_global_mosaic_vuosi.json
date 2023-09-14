@@ -49,9 +49,9 @@
           "visualisation_parameters": {
             "bands": [
               {
-                  "band": "b01",
-                  "min": 120,
-                  "max": 2800
+                "band": "b01",
+                "min": 120,
+                "max": 2800
               },
               {
                 "band": "b02",
@@ -59,49 +59,49 @@
                 "max": 2900
               },
               {
-                  "band": "b03",
-                  "min": 80,
-                  "max": 3000
+                "band": "b03",
+                "min": 80,
+                "max": 3000
               },
               {
-                  "band": "b04",
-                  "min": 40,
-                  "max": 3400
+                "band": "b04",
+                "min": 40,
+                "max": 3400
               },
               {
-                  "band": "b05",
-                  "min": 40,
-                  "max": 3300
+                "band": "b05",
+                "min": 40,
+                "max": 3300
               },
               {
-                  "band": "b06",
-                  "min": 30,
-                  "max": 4000
+                "band": "b06",
+                "min": 30,
+                "max": 4000
               },
               {
-                  "band": "b07",
-                  "min": 30,
-                  "max": 4600
+                "band": "b07",
+                "min": 30,
+                "max": 4600
               },
               {
-                  "band": "b08",
-                  "min": 30,
-                  "max": 4300
+                "band": "b08",
+                "min": 30,
+                "max": 4300
               },
               {
-                  "band": "b8a",
-                  "min": 30,
-                  "max": 5000
+                "band": "b8a",
+                "min": 30,
+                "max": 5000
               },
               {
-                  "band": "b11",
-                  "min": 10,
-                  "max": 4000
+                "band": "b11",
+                "min": 10,
+                "max": 4000
               },
               {
-                  "band": "b12",
-                  "min": 5,
-                  "max": 3500
+                "band": "b12",
+                "min": 5,
+                "max": 3500
               },
               {
                   "band": "view_azimuth_mean",

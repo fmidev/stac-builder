@@ -1,0 +1,81 @@
+{
+    "datasetId": "CHIRPS",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["products/CHIRPS-2.0"],
+      "publicUrlPrefix": "https://data.chc.ucsb.edu/",
+      "gdalUrlPrefix": "https://data.chc.ucsb.edu/"
+    },
+    "destination": {
+      "localItemPath": "items/CHIRPS/",
+      "localCatalogPath": "catalog/CHIRPS/",
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/CHIRPS/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/CHIRPS/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "CHIRPS",
+        "title": "CHIRPS",
+        "description": "CHIRPS",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://data.chc.ucsb.edu/products/CHIRPS-2.0/README-CHIRPS.txt",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "CHIRPS",
+                  "min": 0,
+                  "max": 
+              }
+            ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kuukausittain jaettu katalogitaso CHIRPS -aineistolle.",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^KKL_SMK_Suomi_(?P<startdate>[1-2][0-9]{3}_[0-1][0-9]_[0-3][0-9])-UTM35.tif$",
+      "idTemplate": "CHIRPS_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "bandname": "CHIRPS",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

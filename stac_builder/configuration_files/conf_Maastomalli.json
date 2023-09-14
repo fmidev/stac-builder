@@ -3,13 +3,13 @@
     "source": { 
       "s3Bucket": "pta",
       "s3Prefixes": ["dem/etrs-tm35fin-n2000", "dem/etrs-tm35fin-n2000/aspect", "dem/etrs-tm35fin-n2000/slope"],
-      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/"
+      "publicUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
     },
     "destination": {
-      "localItemPath": "items/Maastomalli/",
-      "localCatalogPath": "catalog/Maastomalli/",
-      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/Maastomalli/",
-      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/itema/Maastomalli/"
+      "localItemPath": "items/MML-DTM-2m/",
+      "localCatalogPath": "catalog/MML-DTM-2m/",
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/MML-DTM-2m/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/itema/MML-DTM-2m/"
     },
     "blacklist": [],
     "dataset": {
