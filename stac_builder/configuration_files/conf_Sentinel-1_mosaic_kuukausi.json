@@ -1,0 +1,88 @@
+{
+    "datasetId": "Sentinel-1_global_mosaic_vuosi",
+    "source": { 
+      "s3Bucket": "pta",
+      "s3Prefixes": ["sen2/s2am_b02", "sen2/s2am_b03", "sen2/s2am_b04", "sen2/s2am_b08", "sen2/s2am_b8a", "sen2/s2am_b11", "sen2/s2am_b12", "sen2/s2am_validation_source_index", "sen2/s2am_valid_observations"],
+      "publicUrlPrefix": "https://pta.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "https://pta.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/Sentinel-1_global_mosaic_vuosi/",
+      "localCatalogPath": "catalog/Sentinel-1_global_mosaic_vuosi/",
+      "catalogBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/catalog/Sentinel-1_global_mosaic_vuosi/",
+      "itemBaseUrl": "https://pta.fmi.fi/tuulituhohaukka/items/Sentinel-1_global_mosaic_vuosi/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "Sentinel-1_global_mosaic_vuosi",
+        "title": "Sentinel-1 Global mosaic (vuosi)",
+        "description": "Sentinel-1 Global mosaic kanavittain pintaheijastussuhde vuosimosaiikki",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "month",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "kuukausiin jaettu katalogitaso Sentinel-1 VV ja VH polarisaatioiden kuukausimosaiikki -aineistolle",
+        "license": "proprietary",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                "band": "VV",
+                "min": -100,
+                "max": 1000
+              },
+              {
+                  "band": "VH",
+                  "min": -100,
+                  "max": 1000
+              }
+            ]
+        }
+      }
+    }
+    },
+    "item": {
+      "fileNamingConvention": "^s2am_sdr_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])-(?P<enddate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<band>.*)_r[1-2]0m.tif$",
+      "idTemplate": "Sentinel-1_global_mosaic_vuosi_startdate_enddate",
+      "mosaicDuration": {
+        "min" : "P363D",
+        "max": "P366D"
+      },
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

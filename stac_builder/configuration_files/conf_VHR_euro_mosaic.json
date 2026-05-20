@@ -1,0 +1,95 @@
+{
+    "datasetId": "VHR-EU-mosaic",
+    "source": { 
+      "s3Bucket": "copernicus",
+      "s3Prefixes": ["vhr/toarefl"],
+      "publicUrlPrefix": "https://copernicus.data.lit.fmi.fi/",
+      "gdalUrlPrefix": "http://copernicus.ceph.lit.fmi.fi/"
+    },
+    "destination": {
+      "localItemPath": "items/VHR-EU-mosaic/",
+      "localCatalogPath": "catalog/VHR-EU-mosaic/",
+      "catalogBaseUrl": "https://pta.data.lit.fmi.fi/stac/catalog/VHR-EU-mosaic/",
+      "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/VHR-EU-mosaic/"
+    },
+    "blacklist": [],
+    "dataset": {
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "VHR-EU-mosaic",
+        "title": "VHR-EU-mosaic",
+        "description": "VHR-EU-mosaic is a Top of Atmosphere reflectance mosaic from Copernicus VHR datasets",
+        "license": "open CCBY v4",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ],
+        "summaries": {
+          "visualisation_parameters": {
+            "bands": [
+              {
+                  "band": "red",
+                  "min": 0,
+                  "max": 255
+              },
+              {
+                "band": "green",
+                "min": 0,
+                "max": 255
+              },
+              {
+                "band": "blue",
+                "min": 0,
+                "max": 255
+              },
+              {
+                "band": "nir",
+                "min": 0,
+                "max": 255
+              }
+          ]
+          }
+        }
+      }
+    },
+    "dataset-time": {
+      "timeFrame" : "year",
+      "template": {
+        "type": "Collection",
+        "stac_version": "1.0.0",
+        "id": "",
+        "description": "Kolmen vuoden välein päivittyvän VHR-EU-mosaic",
+        "license": "open CCBY v4",
+        "links": [
+         {
+           "rel": "license",
+           "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+           "title": "License"
+         }
+        ]
+      }
+    },
+    "item": {
+      "fileNamingConvention": "^[A-Z]{2}*_(?P<startdate>[1-2][0-9]{3})_rgbn.tif$",
+      "idTemplate": "VHR-EU-mosaic_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "open CCBY v4",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
+    }
+  }
+}

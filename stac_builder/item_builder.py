@@ -2,8 +2,7 @@ from datetime import datetime
 import os
 import re
 import json 
-import osgeo
-from osgeo import gdal
+import osgeo.gdal as gdal
 import boto3
 import time
 import isodate

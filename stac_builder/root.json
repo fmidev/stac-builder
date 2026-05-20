@@ -10,7 +10,7 @@
     },
     {
       "rel": "child",
-      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Maastomalli/Maastomalli.json"
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/MML-DTM-2m/MML-DTM-2m.json"
     },
     {
       "rel": "child",
@@ -46,6 +46,10 @@
     },
     {
       "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_mosaic_kuukausi/Sentinel-1_mosaic_kuukausi.json"
+    },
+    {
+      "rel": "child",
       "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_mosaic_dekadi/Sentinel-2_global_mosaic_dekadi.json"
     },
     {
@@ -55,6 +59,10 @@
     {
       "rel": "child",
       "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_indeksimosaiikit/Sentinel-2_indeksimosaiikit.json"
+    },
+    {
+      "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_tuuli/Sentinel-1_tuuli.json"
     }
   ]
 }

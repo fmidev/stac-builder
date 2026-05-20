@@ -46,6 +46,10 @@
     },
     {
       "rel": "child",
+      "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-1_mosaic_kuukausi/Sentinel-1_mosaic_kuukausi.json"
+    },
+    {
+      "rel": "child",
       "href": "https://pta.data.lit.fmi.fi/stac/catalog/Sentinel-2_global_mosaic_dekadi/Sentinel-2_global_mosaic_dekadi.json"
     },
     {

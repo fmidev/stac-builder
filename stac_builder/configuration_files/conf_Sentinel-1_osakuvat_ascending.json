@@ -8,15 +8,12 @@
       "itemBaseUrl": "https://pta.data.lit.fmi.fi/stac/items/Sentinel-1_osakuvat/"
     },
     "dataset": {
-      "selectItemsMatching": {
-        "properties.orbit": "ASCENDING"
-      },
       "template": {
         "type": "Collection",
         "stac_version": "1.0.0",
-        "id": "Sentinel-1_osakuvat_asc",
-        "title": "Sentinel-1 osakuvat, ascending",
-        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat. Orbit: ascending.",
+        "id": "Sentinel-1_osakuvat",
+        "title": "Sentinel-1 osakuvat",
+        "description": "Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat.",
         "license": "proprietary",
         "links": [
           {
@@ -51,7 +48,7 @@
         "type": "Collection",
         "stac_version": "1.0.0",
         "id": "",
-        "description": "Kuukausiin jaettu katalogitaso Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat -aineistolle. Orbit: ascending.",
+        "description": "Kuukausiin jaettu katalogitaso Sentinel-1 takaisinsironta VV ja VH polarisaatioille osakuvat -aineistolle.",
         "license": "proprietary",
         "links": [
           {
@@ -61,5 +58,23 @@
           }
         ]
       }
+    },
+        "item": {
+      "fileNamingConvention": "^S1_processed_(?P<startdate>[1-2][0-9]{3}[0-1][0-9][0-3][0-9])_(?P<starttime>.*)_(?P<endtime>.*)_(?P<orbit>.*)_.*_(?P<band>.*).tif$",
+      "idTemplate": "Sentinel-1_VV_ja_VH_osakuva_startdate",
+      "mosaicDuration": "",
+      "roles": "data",
+      "template": {
+        "stac_version": "1.0.0",
+        "type": "Feature",
+        "id": "",
+        "license": "proprietary",
+        "links": [
+        {
+          "rel": "license",
+          "href": "https://www.ilmatieteenlaitos.fi/avoin-data-lisenssi",
+          "title": "License"
+        }
+    ]
     }
   }
